@@ -1,0 +1,12 @@
+@function vw($px) {
+    @return ($px / 750) * 100vw;
+}
+
+// .app {
+//     width: vw(200);
+//     border: vw(1) solid #f40;
+//     height: vw(50);
+//     font-size: vw(50);
+//     line-height: vw(50);
+//     text-align: center;
+// }

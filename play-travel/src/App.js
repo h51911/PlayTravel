@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+import { Route, Swith, Redirect, withRouter } from 'react-router-dom';
+import Destination from './pages/Destination';
+import Discover from './pages/Discover';
+import Mine from './pages/Mine';
+import Order from './pages/Order';
+import './scss/App.css';
+// import './icon/iconfont.css';
+// import './icon/iconfont.js';
+
+
+
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return <div className="app">
+
+      <span>你好</span>
     </div>
-  );
+  }
 }
 
 export default App;
+
+
+
