@@ -10,6 +10,7 @@ import './scss/App.css';
 import './icon/iconfont.css';
 
 
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -60,17 +61,17 @@ class App extends Component {
     let { menu, selecteditem } = this.state
 
     return <div className="app">
-      <div>
-        <Switch>
-          <Route path='/destination' component={Destination} />
-          <Route path='/discover' component={Discover} />
-          <Route path='/mine' component={Mine} />
-          <Route path='/order' component={Order} />
-          <Route path='/notfound' render={() => <h1>你访问的页面不存在</h1>} />
-          <Redirect from='/' to='discover' exact />
-          <Redirect to='notfound' />
-        </Switch>
-      </div>
+
+      <Switch>
+        <Route path='/destination' component={Destination} />
+        <Route path='/discover' component={Discover} />
+        <Route path='/mine' component={Mine} />
+        <Route path='/order' component={Order} />
+        <Route path='/notfound' render={() => <h1>你访问的页面不存在</h1>} />
+        <Redirect from='/' to='discover' exact />
+        <Redirect to='notfound' />
+      </Switch>
+
       <div className="footer">
         <ul className="nav-menu">
           {
