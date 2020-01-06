@@ -4,6 +4,8 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import Destination from './pages/Destination';
 import Discover from './pages/Discover';
 import Mine from './pages/Mine';
+import LoginPhone from './pages/Login-phone';
+import LoginPass from './pages/Login-pass';
 import Order from './pages/Order';
 import './css/base.css'
 import './scss/App.css';
@@ -49,29 +51,32 @@ class App extends Component {
   };
   changeMenu(current) {
     let path = this.state.menu[current].path;
-
-    this.setState({
-      selecteditem: path,
-      ...this.menu
-    })
-    this.props.history.push(path);
+    if (path !== this.state.selecteditem) {
+      this.setState({
+        selecteditem: path,
+        ...this.menu
+      })
+      this.props.history.push(path);
+    }
   }
-
+  componentDidMount() {
+    this.setState({ selecteditem: this.props.location.pathname });
+  }
   render() {
     let { menu, selecteditem } = this.state
 
     return <div className="app">
-
       <Switch>
         <Route path='/destination' component={Destination} />
         <Route path='/discover' component={Discover} />
         <Route path='/mine' component={Mine} />
+        <Route path='/login-phone' component={LoginPhone} />
+        <Route path='/login-pass' component={LoginPass} />
         <Route path='/order' component={Order} />
         <Route path='/notfound' render={() => <h1>你访问的页面不存在</h1>} />
         <Redirect from='/' to='discover' exact />
         <Redirect to='notfound' />
       </Switch>
-
       <div className="footer">
         <ul className="nav-menu">
           {

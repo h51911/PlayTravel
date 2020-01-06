@@ -1,0 +1,148 @@
+.page-login {
+  padding: 4vw;
+}
+
+.page-login a {
+  text-decoration: none;
+}
+
+.page-login p {
+  padding: 0;
+  margin: 0;
+}
+
+.page-login .login-header .link {
+  display: inline-block;
+  font-size: 3.73333vw;
+  font-weight: bold;
+  width: 5.33333vw;
+  height: 5.33333vw;
+}
+
+.page-login .login-header .h1 {
+  position: relative;
+  padding: 5.33333vw 0 6.4vw;
+  font-size: 9.6vw;
+  font-weight: bold;
+  line-height: 9.6vw;
+  color: #333;
+}
+
+.page-login .login-header .h1:after {
+  content: '';
+  position: absolute;
+  width: 9.33333vw;
+  height: 1.06667vw;
+  bottom: 0;
+  left: 0;
+  background: #224;
+}
+
+.page-login .login-info {
+  padding: 4vw 0;
+}
+
+.page-login .login-info .text-field {
+  position: relative;
+  padding-left: 2.66667vw;
+  margin-bottom: 1.33333vw;
+  border: 0.26667vw solid #ddd;
+}
+
+.page-login .login-info .text-field .label {
+  position: relative;
+  display: block;
+  height: 12.8vw;
+  box-sizing: border-box;
+  padding: 4vw 2.66667vw 2.13333vw;
+}
+
+.page-login .login-info .text-field .text {
+  position: absolute;
+  top: 4.26667vw;
+  color: #999;
+  font-size: 3.2vw;
+  line-height: 5.33333vw;
+}
+
+.page-login .login-info .text-field .float {
+  top: 2.13333vw;
+  transform: scale(0.75);
+  transition: all 0.45s ease;
+  transform-origin: left;
+}
+
+.page-login .login-info .text-field .ant-input {
+  width: 100%;
+  height: 8.53333vw;
+}
+
+.page-login .login-info .text-field .ant-input-suffix {
+  position: absolute;
+  top: 50%;
+  right: 2.13333vw;
+  color: #e0e0e0;
+  height: 5.33333vw;
+  width: 5.33333vw;
+  font-size: 4.26667vw;
+}
+
+.page-login .login-info .text-field .pass {
+  margin-right: 26.66667vw;
+}
+
+.page-login .login-info .text-field .verify-code {
+  position: absolute;
+  top: 50%;
+  right: 2.66667vw;
+  margin-top: -3.2vw;
+  border: 1px solid #f02f45;
+  color: #f02f45;
+  font-size: 3.2vw;
+  text-align: center;
+  box-sizing: border-box;
+  width: 24vw;
+  height: 6.4vw;
+  line-height: 5.86667vw;
+}
+
+.page-login .login-info .tips {
+  padding-top: 1.33333vw;
+  font-size: 3.73333vw;
+  line-height: 5.33333vw;
+  color: #999;
+}
+
+.page-login .login-info .p2 {
+  padding-top: 5.33333vw;
+}
+
+.page-login .login-info .p2 .login-type {
+  display: inline-block;
+  color: #f02f45;
+  font-size: 4.26667vw;
+  line-height: 10.66667vw;
+  height: 10.66667vw;
+  width: 50%;
+  text-align: left;
+}
+
+.page-login .login-info .p2 .login-btn {
+  float: right;
+  display: block;
+  background: #ddd;
+  color: #999;
+  font-size: 4.26667vw;
+  line-height: 10.66667vw;
+  height: 10.66667vw;
+  width: 22.4vw;
+  font-weight: bold;
+  box-sizing: border-box;
+  border-radius: 6.4vw;
+  text-align: center;
+}
+
+.page-login .login-info .p2 .active {
+  color: #fff;
+  background: #224;
+}
