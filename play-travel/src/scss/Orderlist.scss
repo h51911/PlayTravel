@@ -1,0 +1,16 @@
+@function vw($px) {
+    @return ($px / 750) * 100vw;
+}
+
+.order_list {
+    .order_nav {
+        height: vw(173);
+        background: #fff;
+        padding: vw(70) vw(40) vw(0);
+
+        h2 {
+            font-size: vw(60);
+            font-weight: bold;
+        }
+    }
+}
