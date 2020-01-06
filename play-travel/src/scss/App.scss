@@ -1,0 +1,54 @@
+@function vw($px) {
+    @return ($px / 750) * 100vw;
+}
+
+
+html,
+body {
+
+    height: 100%;
+}
+
+.app {
+    height: 100%;
+
+
+    .footer {
+        height: vw(93);
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+
+        .nav-menu {
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+
+            li {
+                display: flex;
+                flex: 1;
+                height: 100%;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+
+
+                .icon {
+                    font-size: vw(44);
+                }
+
+                .font {
+                    font-size: vw(18);
+                }
+            }
+
+            .active {
+                color: red;
+            }
+
+        }
+    }
+}
