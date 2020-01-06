@@ -81,7 +81,7 @@ class LoginPhone extends Component {
                             onChange={this.inputPass}
                             onBlur={this.blur1} />
                     </label>
-                    <div className="verify-code" onClick={getCode}>获取验证码</div>
+                    <div className="verify-code" onClick={this.getCode}>获取验证码</div>
                 </div>
                 <p className="tips">未注册过的手机号将自动创建为玩途旅行账户</p>
                 <p className="p2">
