@@ -1,3 +1,9 @@
+.order_list {
+  height: 100%;
+  background: #f5f5f5;
+  font-family: "Helvetica Neue", Helvetica;
+}
+
 .order_list .order_nav {
   height: 23.06667vw;
   background: #fff;
@@ -5,6 +11,122 @@
 }
 
 .order_list .order_nav h2 {
-  font-size: 8vw;
+  font-size: 8.13333vw;
+  font-weight: normal;
+  margin-bottom: 5.33333vw;
+  line-height: 8.13333vw;
+}
+
+.order_list .order_nav .nav_item {
+  display: flex;
+}
+
+.order_list .order_nav .nav_item li {
+  flex: 1;
+  text-align: center;
+  font-size: 3.73333vw;
+}
+
+.order_list .order_nav .nav_item li span {
+  display: inline-block;
+  padding: 2.66667vw 0 1.33333vw;
+  color: #999999;
+}
+
+.order_list .order_nav .nav_item .active > span {
+  border-bottom: 0.66667vw solid red;
+  color: red;
+}
+
+.order_list .order_item {
+  background: #F5F5F5;
+  padding: 3.2vw 5.33333vw;
+}
+
+.order_list .order_item .single_item {
+  height: 56.8vw;
+  background: #fff;
+  padding: 5.33333vw 4.13333vw;
+}
+
+.order_list .order_item .single_item .item_top .first_line {
+  margin-bottom: 3.2vw;
+}
+
+.order_list .order_item .single_item .item_top .first_line .item_status {
+  float: left;
+  font-size: 4.4vw;
+  font-weight: 600;
+  color: red;
+  line-height: 4.4vw;
+}
+
+.order_list .order_item .single_item .item_top .first_line .item_price {
+  float: right;
+  font-size: 4.4vw;
+  color: red;
+  line-height: 4.4vw;
+}
+
+.order_list .order_item .single_item .item_top .second_line {
+  padding-bottom: 4.26667vw;
+  border-bottom: 0.26667vw solid #F5F5F5;
+}
+
+.order_list .order_item .single_item .item_top .second_line .order_num {
+  font-size: 3.2vw;
+  color: #B5B5B5;
+  line-height: 3.2vw;
+}
+
+.order_list .order_item .single_item .item_top .second_line .pay_limit {
+  font-size: 3.2vw;
+  color: #333333;
+  line-height: 3.2vw;
+}
+
+.order_list .order_item .single_item .item_center {
+  padding-top: 4vw;
+}
+
+.order_list .order_item .single_item .item_center .item_title {
+  font-size: 4vw;
+  line-height: 5.33333vw;
   font-weight: bold;
+}
+
+.order_list .order_item .single_item .item_center .item_time {
+  margin-top: 3.2vw;
+  font-size: 2.93333vw;
+  line-height: 5.06667vw;
+  color: #999999;
+}
+
+.order_list .order_item .single_item .item_center .item_mount {
+  font-size: 2.93333vw;
+  line-height: 5.06667vw;
+  color: #999999;
+  margin-bottom: 3.73333vw;
+}
+
+.order_list .order_item .single_item .item_footer .cancel_order {
+  display: inline-block;
+  height: 8.8vw;
+  width: 37.33333vw;
+  border: 0.26667vw solid #000;
+  line-height: 9.33333vw;
+  text-align: center;
+  margin-right: 4.53333vw;
+  border-radius: 0.4vw;
+}
+
+.order_list .order_item .single_item .item_footer .to_pay {
+  display: inline-block;
+  height: 9.33333vw;
+  width: 37.86667vw;
+  border-radius: 0.4vw;
+  line-height: 9.33333vw;
+  text-align: center;
+  background: red;
+  color: #fff;
 }
