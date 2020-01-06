@@ -1,0 +1,10 @@
+.order_list .order_nav {
+  height: 23.06667vw;
+  background: #fff;
+  padding: 9.33333vw 5.33333vw 0vw;
+}
+
+.order_list .order_nav h2 {
+  font-size: 8vw;
+  font-weight: bold;
+}
