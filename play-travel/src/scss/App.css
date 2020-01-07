@@ -7,6 +7,14 @@ body {
   height: 100%;
 }
 
+.app .hide {
+  display: none;
+}
+
+.app .show {
+  display: block;
+}
+
 .app .footer {
   height: 12.4vw;
   position: fixed;

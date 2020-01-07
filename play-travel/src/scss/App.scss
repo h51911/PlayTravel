@@ -12,6 +12,13 @@ body {
 .app {
     height: 100%;
 
+    .hide {
+        display: none;
+    }
+
+    .show {
+        display: block;
+    }
 
     .footer {
         height: vw(93);
