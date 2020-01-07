@@ -5,6 +5,7 @@ import Destination from './pages/Destination';
 import Discover from './pages/Discover';
 import Mine from './pages/Mine';
 import Order from './pages/Order';
+import Orderdetail from './pages/Orderdetail';
 import './css/base.css'
 import './scss/App.css';
 import './icon/iconfont.css';
@@ -66,6 +67,7 @@ class App extends Component {
         <Route path='/destination' component={Destination} />
         <Route path='/discover' component={Discover} />
         <Route path='/mine' component={Mine} />
+        <Route path='/order/:id' component={Orderdetail} />
         <Route path='/order' component={Order} />
         <Route path='/notfound' render={() => <h1>你访问的页面不存在</h1>} />
         <Redirect from='/' to='discover' exact />

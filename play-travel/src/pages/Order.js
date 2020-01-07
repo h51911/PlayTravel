@@ -71,6 +71,10 @@ class Order extends Component {
         })
     }
 
+    getDetail = (id) => {
+        this.props.history.push(`/order/${id}`)
+    }
+
 
     render() {
         let { navlist, currentIdx, datalist } = this.state
@@ -87,7 +91,11 @@ class Order extends Component {
                 {/* {console.log(currentIdx)} */}
                 {datalist.map((item) => {
                     if (currentIdx === 0) {
-                        return <div className={item.status_id === '25' ? "single_item_overdue single_item" : "single_item"} key={item.order_id}>
+                        return <div
+                            className={item.status_id === '25' ? "single_item_overdue single_item" : "single_item"}
+                            key={item.order_id}
+                            onClick={this.getDetail.bind(this, item.order_id)}
+                        >
                             <div className="item_top">
                                 <p className="clearfix first_line ">
                                     <span className="item_status">{item.status_name}</span>
