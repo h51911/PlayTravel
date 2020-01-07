@@ -3,9 +3,7 @@ import {
     Input,
     Tooltip,
     Icon,
-    Divider,
-    Carousel,
-    Menu
+    Carousel
 } from 'antd';
 import My from '../api/myweb';
 import Advertisement from '../components/Advertisement';
@@ -102,7 +100,7 @@ class Discover extends Component {
                         {
                             this.state.bannerimg.map((item) => {
                                 return <div key={item.banner_id}>
-                                    <img src={item.h5_image_url} title={item.title} />
+                                    <img alt={item.title} src={item.h5_image_url} title={item.title} />
                                 </div>
                             })
                         }
@@ -115,7 +113,7 @@ class Discover extends Component {
                         {
                             this.state.recommens.map((item, idx) => {
                                 return <div className="recombag" key={item.title}>
-                                    < img src = {
+                                    < img alt={item.title} src = {
                                         process.env.PUBLIC_URL + item.bag
                                     }
                                     />
@@ -147,7 +145,7 @@ class Discover extends Component {
                             this.state.hots.map((item, idx) => {
                                 return <div className="bourncity" key={item.code}
                                     onClick={this.toList.bind(this,item.code)}>
-                                    <img src={item.image_url} title={item.title} />
+                                    <img alt={item.title} src={item.image_url} title={item.title} />
                                     <h3>{item.title}</h3>
                                     <p>{item.code}</p>
                                 </div>
@@ -168,7 +166,7 @@ class Discover extends Component {
                                             item.item.products.map((ite,ind)=>{
                                                 return <div className="grouptown" key={ite.product_id}
                                                 onClick={this.toDetail.bind(this,ite.product_id)}>
-                                                    <img src={ite.image_url} title={ite.name} />
+                                                    <img alt={ite.name} src={ite.image_url} title={ite.name} />
                                                     <h3>{ite.name}</h3>
                                                     <p className="groupprice">{ite.min_price}</p>
                                                 </div>
@@ -194,7 +192,7 @@ class Discover extends Component {
                                         this.state.four.map((ite) => {
                                             let ind = 'categories' + ite;
                                             return <div className="tokyoway" key={ite} onClick={this.toDestination}>
-                                                <img src={item[ind].image_url} />
+                                                <img alt={item[ind].category_name} src={item[ind].image_url} />
                                                 <div className="tokyoright">
                                                     <p className="tokyoleft">
                                                         < span className = "tokyotitle" > {
