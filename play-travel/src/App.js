@@ -7,6 +7,8 @@ import Mine from './pages/Mine';
 import LoginPhone from './pages/Login-phone';
 import LoginPass from './pages/Login-pass';
 import Order from './pages/Order';
+import List from './pages/List';
+import Detail from './pages/Detail';
 import './css/base.css'
 import './scss/App.css';
 import './icon/iconfont.css';
@@ -72,6 +74,8 @@ class App extends Component {
         <Route path='/login-phone' component={LoginPhone} />
         <Route path='/login-pass' component={LoginPass} />
         <Route path='/order' component={Order} />
+        <Route path='/list' component={List} />
+        <Route path='/detail' component={Detail} />
         <Route path='/notfound' render={() => <h1>你访问的页面不存在</h1>} />
         <Redirect from='/' to='discover' exact />
         <Redirect to='notfound' />
