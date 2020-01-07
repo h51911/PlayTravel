@@ -228,10 +228,10 @@ html, body {
   text-align: center;
 }
 
-.listBox .disn {
+.disn {
   display: none;
 }
 
-.listBox .disb {
+.disb {
   display: block;
 }
