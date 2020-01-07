@@ -6,6 +6,8 @@ import Discover from './pages/Discover';
 import Mine from './pages/Mine';
 import LoginPhone from './pages/Login-phone';
 import LoginPass from './pages/Login-pass';
+import Account from './pages/Account';
+import SetPass from './pages/Set-pass';
 import Order from './pages/Order';
 import Orderdetail from './pages/Orderdetail';
 import List from './pages/List';
@@ -19,6 +21,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      hide: false,
       selecteditem: '/discover',
       menu: [
         {
@@ -44,7 +47,6 @@ class App extends Component {
           path: '/mine',
           text: '我的',
           icon: "icon-wode"
-
         }
       ]
 
@@ -61,11 +63,27 @@ class App extends Component {
       this.props.history.push(path);
     }
   }
+  isHidden = () => {
+    let path = this.props.location.pathname;
+    let arr_hide = ['/login-phone', '/login-pass', '/account', '/set-pass'];
+    if (arr_hide.some(val => val === path)) {
+      if (this.state.hide !== true)
+        this.setState({ hide: true });
+    } else if (this.state.hide !== false) {
+      this.setState({ hide: false });
+      if (path !== this.state.selecteditem)
+        this.setState({ selecteditem: path });
+    }
+
+  }
   componentDidMount() {
-    this.setState({ selecteditem: this.props.location.pathname });
+    this.isHidden();
+  };
+  componentDidUpdate() {
+    this.isHidden();
   }
   render() {
-    let { menu, selecteditem } = this.state
+    let { menu, selecteditem, hide } = this.state
 
     return <div className="app">
       <Switch>
@@ -75,6 +93,8 @@ class App extends Component {
         <Route path='/login-phone' component={LoginPhone} />
         <Route path='/login-pass' component={LoginPass} />
         <Route path='/order/:id' component={Orderdetail} />
+        <Route path='/account' component={Account} />
+        <Route path='/set-pass' component={SetPass} />
         <Route path='/order' component={Order} />
         <Route path='/list' component={List} />
         <Route path='/detail' component={Detail} />
@@ -82,7 +102,7 @@ class App extends Component {
         <Redirect from='/' to='discover' exact />
         <Redirect to='notfound' />
       </Switch>
-      <div className="footer">
+      <div className={["footer", hide ? 'hide' : 'show'].join(' ')} >
         <ul className="nav-menu">
           {
             menu.map((item, index) => {

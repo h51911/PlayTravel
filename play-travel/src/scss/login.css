@@ -1,34 +1,36 @@
-.page-login {
+.page-login,
+.set-pass {
   padding: 4vw;
 }
 
-.page-login a {
-  text-decoration: none;
-}
-
-.page-login p {
-  padding: 0;
-  margin: 0;
-}
-
-.page-login .login-header .link {
-  display: inline-block;
-  font-size: 3.73333vw;
-  font-weight: bold;
-  width: 5.33333vw;
+.page-login .login-header .link,
+.set-pass .login-header .link {
+  width: 32vw;
   height: 5.33333vw;
 }
 
-.page-login .login-header .h1 {
+.page-login .login-header .anticon-left,
+.set-pass .login-header .anticon-left {
+  font-size: 4.26667vw;
+  line-height: 5.33333vw;
+  height: 5.33333vw;
+  color: #000;
+  font-weight: bold;
+  vertical-align: top;
+}
+
+.page-login .login-header .h1,
+.set-pass .login-header .h1 {
   position: relative;
   padding: 5.33333vw 0 6.4vw;
   font-size: 9.6vw;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 9.6vw;
   color: #333;
 }
 
-.page-login .login-header .h1:after {
+.page-login .login-header .h1:after,
+.set-pass .login-header .h1:after {
   content: '';
   position: absolute;
   width: 9.33333vw;
@@ -38,60 +40,125 @@
   background: #224;
 }
 
-.page-login .login-info {
+.page-login main .set-submit,
+.set-pass main .set-submit {
+  display: inline-block;
+  width: 34.66667vw;
+  height: 12vw;
+  background: #f02f45;
+  border-radius: 6.4vw;
+  line-height: 12vw;
+  text-align: center;
+  color: #fff;
+  font-size: 4.26667vw;
+  font-weight: bold;
+}
+
+.page-login main .login-info,
+.page-login main .set-info,
+.set-pass main .login-info,
+.set-pass main .set-info {
   padding: 4vw 0;
 }
 
-.page-login .login-info .text-field {
+.page-login main .login-info .text-field,
+.page-login main .set-info .text-field,
+.set-pass main .login-info .text-field,
+.set-pass main .set-info .text-field {
   position: relative;
   padding-left: 2.66667vw;
   margin-bottom: 1.33333vw;
   border: 0.26667vw solid #ddd;
 }
 
-.page-login .login-info .text-field .label {
-  position: relative;
+.page-login main .login-info .text-field .label,
+.page-login main .set-info .text-field .label,
+.set-pass main .login-info .text-field .label,
+.set-pass main .set-info .text-field .label {
   display: block;
   height: 12.8vw;
   box-sizing: border-box;
   padding: 4vw 2.66667vw 2.13333vw;
 }
 
-.page-login .login-info .text-field .text {
+.page-login main .login-info .text-field .text,
+.page-login main .set-info .text-field .text,
+.set-pass main .login-info .text-field .text,
+.set-pass main .set-info .text-field .text {
   position: absolute;
+  z-index: 1;
   top: 4.26667vw;
   color: #999;
   font-size: 3.2vw;
   line-height: 5.33333vw;
 }
 
-.page-login .login-info .text-field .float {
+.page-login main .login-info .text-field .float,
+.page-login main .set-info .text-field .float,
+.set-pass main .login-info .text-field .float,
+.set-pass main .set-info .text-field .float {
   top: 2.13333vw;
   transform: scale(0.75);
   transition: all 0.45s ease;
   transform-origin: left;
 }
 
-.page-login .login-info .text-field .ant-input {
+.page-login main .login-info .text-field .ant-input,
+.page-login main .set-info .text-field .ant-input,
+.set-pass main .login-info .text-field .ant-input,
+.set-pass main .set-info .text-field .ant-input {
+  border: none;
+  outline-style: none;
   width: 100%;
   height: 8.53333vw;
+  padding-left: 0;
 }
 
-.page-login .login-info .text-field .ant-input-suffix {
+.page-login main .login-info .text-field .ant-input:focus,
+.page-login main .set-info .text-field .ant-input:focus,
+.set-pass main .login-info .text-field .ant-input:focus,
+.set-pass main .set-info .text-field .ant-input:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.page-login main .login-info .text-field .ant-input-suffix,
+.page-login main .set-info .text-field .ant-input-suffix,
+.set-pass main .login-info .text-field .ant-input-suffix,
+.set-pass main .set-info .text-field .ant-input-suffix {
   position: absolute;
   top: 50%;
   right: 2.13333vw;
   color: #e0e0e0;
   height: 5.33333vw;
-  width: 5.33333vw;
-  font-size: 4.26667vw;
 }
 
-.page-login .login-info .text-field .pass {
+.page-login main .login-info .text-field .ant-input-suffix .ant-input-clear-icon,
+.page-login main .set-info .text-field .ant-input-suffix .ant-input-clear-icon,
+.set-pass main .login-info .text-field .ant-input-suffix .ant-input-clear-icon,
+.set-pass main .set-info .text-field .ant-input-suffix .ant-input-clear-icon {
+  font-size: 5.33333vw;
+  line-height: 1;
+}
+
+.page-login main .login-info .text-field .ant-input-password-icon,
+.page-login main .set-info .text-field .ant-input-password-icon,
+.set-pass main .login-info .text-field .ant-input-password-icon,
+.set-pass main .set-info .text-field .ant-input-password-icon {
+  display: none;
+}
+
+.page-login main .login-info .text-field .code,
+.page-login main .set-info .text-field .code,
+.set-pass main .login-info .text-field .code,
+.set-pass main .set-info .text-field .code {
   margin-right: 26.66667vw;
 }
 
-.page-login .login-info .text-field .verify-code {
+.page-login main .login-info .text-field .verify-code,
+.page-login main .set-info .text-field .verify-code,
+.set-pass main .login-info .text-field .verify-code,
+.set-pass main .set-info .text-field .verify-code {
   position: absolute;
   top: 50%;
   right: 2.66667vw;
@@ -106,18 +173,21 @@
   line-height: 5.86667vw;
 }
 
-.page-login .login-info .tips {
+.page-login main .tips,
+.set-pass main .tips {
   padding-top: 1.33333vw;
   font-size: 3.73333vw;
   line-height: 5.33333vw;
   color: #999;
 }
 
-.page-login .login-info .p2 {
+.page-login main .p2,
+.set-pass main .p2 {
   padding-top: 5.33333vw;
 }
 
-.page-login .login-info .p2 .login-type {
+.page-login main .p2 .login-type,
+.set-pass main .p2 .login-type {
   display: inline-block;
   color: #f02f45;
   font-size: 4.26667vw;
@@ -127,7 +197,8 @@
   text-align: left;
 }
 
-.page-login .login-info .p2 .login-btn {
+.page-login main .p2 .login-btn,
+.set-pass main .p2 .login-btn {
   float: right;
   display: block;
   background: #ddd;
@@ -142,7 +213,17 @@
   text-align: center;
 }
 
-.page-login .login-info .p2 .active {
+.page-login main .p2 .active,
+.set-pass main .p2 .active {
   color: #fff;
   background: #224;
+}
+
+.page-login main .forget,
+.set-pass main .forget {
+  padding: 5.33333vw 2.66667vw 0;
+  text-align: right;
+  font-size: 3.73333vw;
+  line-height: 1;
+  color: #000;
 }
