@@ -13,6 +13,7 @@
         height: vw(172);
         background: #fff;
         padding: vw(69) vw(40) vw(0);
+        box-sizing: content-box;
 
         h2 {
             font-size: vw(62);
@@ -66,6 +67,7 @@
             background: #fff;
             padding: vw(40) vw(31);
             margin-bottom: vw(27);
+            box-sizing: content-box;
 
             .item_top {
 

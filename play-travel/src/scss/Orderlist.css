@@ -8,6 +8,7 @@
   height: 22.93333vw;
   background: #fff;
   padding: 9.2vw 5.33333vw 0vw;
+  box-sizing: content-box;
 }
 
 .order_list .order_nav h2 {
@@ -49,6 +50,7 @@
   background: #fff;
   padding: 5.33333vw 4.13333vw;
   margin-bottom: 3.6vw;
+  box-sizing: content-box;
 }
 
 .order_list .order_item .single_item .item_top .first_line {
