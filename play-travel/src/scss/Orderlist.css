@@ -128,8 +128,9 @@
 
 .order_list .order_item .single_item .item_footer .to_pay {
   display: inline-block;
-  height: 9.33333vw;
+  height: 8.8vw;
   width: 37.86667vw;
+  border: 0.26667vw solid #F02F45;
   border-radius: 0.4vw;
   line-height: 9.33333vw;
   text-align: center;
@@ -140,6 +141,68 @@
 
 .order_list .order_item .single_item .item_footer .item_delete {
   display: none;
+}
+
+.order_list .order_item .single_item .deletepopup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1001;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.order_list .order_item .single_item .deletepopup .delete_mes {
+  position: absolute;
+  background: #fff;
+  padding-top: 8vw;
+  width: 74.26667vw;
+  height: 44.13333vw;
+  box-sizing: border-box;
+  border-radius: 1.6vw;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+}
+
+.order_list .order_item .single_item .deletepopup .delete_title {
+  font-size: 4.53333vw;
+  line-height: 4.53333vw;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 2.26667vw;
+}
+
+.order_list .order_item .single_item .deletepopup .delete_content {
+  padding: 0 11.06667vw;
+  line-height: 5.33333vw;
+  font-size: 3.73333vw;
+  color: #8F8F8F;
+  text-align: center;
+  margin-bottom: 5.06667vw;
+}
+
+.order_list .order_item .single_item .deletepopup .delete_button {
+  border-top: 0.13333vw solid #EFEFEF;
+}
+
+.order_list .order_item .single_item .deletepopup .delete_button span {
+  display: inline-block;
+  width: 50%;
+  box-sizing: border-box;
+  text-align: center;
+  height: 13.33333vw;
+  line-height: 13.33333vw;
+}
+
+.order_list .order_item .single_item .deletepopup .delete_button .canceldelete {
+  border-right: 0.13333vw solid #EFEFEF;
+}
+
+.order_list .order_item .single_item .deletepopup .delete_button .confirmdelete {
+  color: #F02F45;
 }
 
 .order_list .order_item .single_item_overdue {
