@@ -6,6 +6,7 @@ class Order extends Component {
     // console.log(this)
     state = {
         currentIdx: 0,
+        deletebutton: false,
         navlist: ['全部订单', '待付款', '处理中', '已确认', '已退订'],
         datalist: [
             {
@@ -17,7 +18,8 @@ class Order extends Component {
                 status_name: "未支付",
                 product_id: "15875",
                 payment_time_limit: "2020-01-07 11:44:51",
-                tour_date: "2020-01-15"
+                tour_date: "2020-01-15",
+
             },
             {
                 order_id: "1344410",
@@ -28,7 +30,8 @@ class Order extends Component {
                 status_name: "已过支付有效期",
                 product_id: "14443",
                 payment_time_limit: "2020-01-06 16:37:15",
-                tour_date: "2020-01-08"
+                tour_date: "2020-01-08",
+
             },
             {
                 order_id: "1344420",
@@ -39,7 +42,7 @@ class Order extends Component {
                 status_name: "已过支付有效期",
                 product_id: "14443",
                 payment_time_limit: "2020-01-06 16:37:15",
-                tour_date: "2020-01-08"
+                tour_date: "2020-01-08",
             }
         ],
 
@@ -50,6 +53,24 @@ class Order extends Component {
             currentIdx: idx,
         })
     }
+    deleteItem = (id) => {
+        this.setState({
+            deletebutton: true
+        })
+    }
+    cancelDelete = () => {
+        this.setState({
+            deletebutton: false
+        })
+    }
+    confirmDelete = (id) => {
+        let datalist = this.state.datalist.filter(item => item.order_id !== id)
+        this.setState({
+            datalist,
+            deletebutton: false
+        })
+    }
+
 
     render() {
         let { navlist, currentIdx, datalist } = this.state
@@ -86,13 +107,21 @@ class Order extends Component {
                             <div className="item_footer">
                                 <span className="cancel_order">取消订单</span>
                                 <span className="to_pay">去支付</span>
-                                <p className="item_delete"><span className='iconfont icon-shanchu'></span>删除订单</p>
+                                <p className="item_delete" onClick={this.deleteItem}><span className='iconfont icon-shanchu' ></span>删除订单</p>
                             </div>
+                            <div className="deletepopup" style={{ display: this.state.deletebutton ? "block" : 'none' }}>
+                                <div className="delete_mes">
+                                    <h5 className="delete_title">删除订单</h5>
+                                    <p className="delete_content">确定删除订单吗？删除后订单将不可恢复</p>
+                                    <div className='delete_button'><span className="canceldelete" onClick={this.cancelDelete}>取消</span><span className="confirmdelete" onClick={this.confirmDelete.bind(this, item.order_id)}>删除</span></div>
+                                </div>
+                            </div>
+
                         </div>
                     }
                     else if (currentIdx === 1) {
                         if (item.status_id === '1') {
-                            return <div className="single_item" key={item.order_id}>
+                            return <div className={item.status_id === '25' ? "single_item_overdue single_item" : "single_item"} key={item.order_id}>
                                 <div className="item_top">
                                     <p className="clearfix first_line ">
                                         <span className="item_status">{item.status_name}</span>
@@ -112,18 +141,14 @@ class Order extends Component {
                                 <div className="item_footer">
                                     <span className="cancel_order">取消订单</span>
                                     <span className="to_pay">去支付</span>
-                                    <p className="item_delete"><span className='iconfont icon-shanchu'></span>删除订单</p>
+                                    <p className="item_delete" onClick={this.deleteItem.bind(this, item.order_id)}><span className='iconfont icon-shanchu'></span>删除订单</p>
                                 </div>
                             </div>
                         }
-                    } else if (currentIdx === 2) {
-                        return 666
                     }
-
                 })}
             </div>
         </div >
-
     }
 }
 

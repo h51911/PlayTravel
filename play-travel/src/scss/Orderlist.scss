@@ -143,6 +143,8 @@
             }
 
             .item_footer {
+
+
                 .cancel_order {
                     display: inline-block;
                     height: vw(66);
@@ -157,8 +159,9 @@
 
                 .to_pay {
                     display: inline-block;
-                    height: vw(70);
+                    height: vw(66);
                     width: vw(284);
+                    border: vw(2) solid #F02F45;
                     border-radius: vw(3);
                     line-height: vw(70);
                     text-align: center;
@@ -171,6 +174,84 @@
                 .item_delete {
                     display: none;
                 }
+            }
+
+
+            .deletepopup {
+                position: fixed;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                z-index: 1001;
+                background: rgba(0, 0, 0, 0.3);
+                // display: flex;
+                // justify-content: center;
+                // align-items: center;
+                // display: none;
+
+
+
+
+                .delete_mes {
+                    position: absolute;
+                    background: #fff;
+                    padding-top: vw(60);
+                    width: vw(557);
+                    height: vw(331);
+                    box-sizing: border-box;
+                    border-radius: vw(12);
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    z-index: 2000;
+                }
+
+                .delete_title {
+                    font-size: vw(34);
+                    line-height: vw(34);
+                    color: #000000;
+                    text-align: center;
+                    margin-bottom: vw(17);
+
+
+                }
+
+                .delete_content {
+
+                    padding: 0 vw(83);
+                    line-height: vw(40);
+                    font-size: vw(28);
+                    color: #8F8F8F;
+                    text-align: center;
+                    margin-bottom: vw(38);
+                }
+
+                .delete_button {
+                    border-top: vw(1) solid #EFEFEF;
+
+                    span {
+                        display: inline-block;
+                        width: 50%;
+                        box-sizing: border-box;
+                        text-align: center;
+                        height: vw(100);
+                        line-height: vw(100);
+
+
+                    }
+
+                    .canceldelete {
+                        border-right: vw(1) solid #EFEFEF;
+
+                    }
+
+                    .confirmdelete {
+                        color: #F02F45;
+                    }
+                }
+
+
             }
         }
 
@@ -221,9 +302,15 @@
                     line-height: vw(68);
                     display: block;
                     font-size: vw(27);
+
+
+
                 }
 
             }
+
+
+
 
 
 
