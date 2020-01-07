@@ -4,21 +4,21 @@
 
 .order_list {
     height: 100%;
-    background: #f5f5f5;
+    background: #F5F5F5;
     font-family: "Helvetica Neue",
         Helvetica;
 
 
     .order_nav {
-        height: vw(173);
+        height: vw(172);
         background: #fff;
-        padding: vw(70) vw(40) vw(0);
+        padding: vw(69) vw(40) vw(0);
 
         h2 {
-            font-size: vw(61);
+            font-size: vw(62);
             font-weight: normal;
-            margin-bottom: vw(40);
-            line-height: vw(61);
+            margin-bottom: vw(33);
+            line-height: vw(62);
         }
 
         .nav_item {
@@ -29,13 +29,17 @@
             li {
                 flex: 1;
                 text-align: center;
-                font-size: vw(28);
+
+
 
 
                 span {
                     display: inline-block;
-                    padding: vw(20) 0 vw(10);
+                    padding: vw(25) 0 vw(18);
                     color: #999999;
+                    font-size: vw(27);
+                    line-height: vw(27);
+
                 }
 
             }
@@ -43,8 +47,8 @@
 
 
             .active>span {
-                border-bottom: vw(5) solid red;
-                color: red;
+                border-bottom: vw(7) solid #F02F45;
+                color: #F02F45;
             }
 
         }
@@ -116,7 +120,7 @@
 
                 .item_time {
                     margin-top: vw(24);
-                    font-size: vw(22);
+                    font-size: vw(25);
                     line-height: vw(38);
                     color: #999999;
 
@@ -124,7 +128,7 @@
 
                 .item_mount {
 
-                    font-size: vw(22);
+                    font-size: vw(25);
                     line-height: vw(38);
                     color: #999999;
                     margin-bottom: vw(28)
@@ -138,11 +142,12 @@
                     display: inline-block;
                     height: vw(66);
                     width: vw(280);
-                    border: vw(2) solid #000;
+                    border: vw(2) solid #646464;
                     line-height: vw(70);
                     text-align: center;
                     margin-right: vw(34);
                     border-radius: vw(3);
+                    font-size: vw(29);
                 }
 
                 .to_pay {
@@ -152,8 +157,9 @@
                     border-radius: vw(3);
                     line-height: vw(70);
                     text-align: center;
-                    background: red;
+                    background: #F02F45;
                     color: #fff;
+                    font-size: vw(29);
 
                 }
             }
