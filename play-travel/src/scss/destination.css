@@ -64,9 +64,10 @@ html, body, #app, #root {
 }
 
 #destination header ul li {
-  height: 10.66667vw;
+  height: 12vw;
   font-size: 3.2vw;
-  line-height: 10.66667vw;
+  line-height: 12vw;
+  padding-left: 2.66667vw;
 }
 
 #destination .ant-divider {

@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import My from '../api/myweb';
 
 class DesList extends Component{
+    constructor(props) {
+        super(props);
+
+        this.toList = this.toList.bind(this);
+    }
     state = {
         city: [],
         pid:''
@@ -18,6 +23,10 @@ class DesList extends Component{
             pid
         } = this.props.match.params
         this.changeType(pid);
+    }
+
+    toList(activeKey) {
+        this.props.history.push('/list/' + activeKey)
     }
 
     async changeType(pid) {
@@ -42,7 +51,8 @@ class DesList extends Component{
                         <div className="citytown">
                         {
                             item.subs.map((ite,ind) => {
-                                return <p key={ite.code}>{ite.title}</p>
+                                return <p key={ite.code}
+                                onClick={this.toList.bind(this,ite.code)}>{ite.title}</p>
                             })
                             }
                         </div>

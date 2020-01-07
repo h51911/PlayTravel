@@ -56,9 +56,11 @@ html,body,#app,#root{
             z-index: 3;
             border-radius: 0 0 vw(4) vw(4);
             li{
-                height: vw(80);
+                height: vw(90);
                 font-size: vw(24);
-                line-height: vw(80);
+                line-height: vw(90);
+                padding-left: vw(20);
+                
             }
         }
     }
