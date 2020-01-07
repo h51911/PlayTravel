@@ -1,20 +1,20 @@
 .order_list {
   height: 100%;
-  background: #f5f5f5;
+  background: #F5F5F5;
   font-family: "Helvetica Neue", Helvetica;
 }
 
 .order_list .order_nav {
-  height: 23.06667vw;
+  height: 22.93333vw;
   background: #fff;
-  padding: 9.33333vw 5.33333vw 0vw;
+  padding: 9.2vw 5.33333vw 0vw;
 }
 
 .order_list .order_nav h2 {
-  font-size: 8.13333vw;
+  font-size: 8.26667vw;
   font-weight: normal;
-  margin-bottom: 5.33333vw;
-  line-height: 8.13333vw;
+  margin-bottom: 4.4vw;
+  line-height: 8.26667vw;
 }
 
 .order_list .order_nav .nav_item {
@@ -24,18 +24,19 @@
 .order_list .order_nav .nav_item li {
   flex: 1;
   text-align: center;
-  font-size: 3.73333vw;
 }
 
 .order_list .order_nav .nav_item li span {
   display: inline-block;
-  padding: 2.66667vw 0 1.33333vw;
+  padding: 3.33333vw 0 2.4vw;
   color: #999999;
+  font-size: 3.6vw;
+  line-height: 3.6vw;
 }
 
 .order_list .order_nav .nav_item .active > span {
-  border-bottom: 0.66667vw solid red;
-  color: red;
+  border-bottom: 0.93333vw solid #F02F45;
+  color: #F02F45;
 }
 
 .order_list .order_item {
@@ -97,13 +98,13 @@
 
 .order_list .order_item .single_item .item_center .item_time {
   margin-top: 3.2vw;
-  font-size: 2.93333vw;
+  font-size: 3.33333vw;
   line-height: 5.06667vw;
   color: #999999;
 }
 
 .order_list .order_item .single_item .item_center .item_mount {
-  font-size: 2.93333vw;
+  font-size: 3.33333vw;
   line-height: 5.06667vw;
   color: #999999;
   margin-bottom: 3.73333vw;
@@ -113,11 +114,12 @@
   display: inline-block;
   height: 8.8vw;
   width: 37.33333vw;
-  border: 0.26667vw solid #000;
+  border: 0.26667vw solid #646464;
   line-height: 9.33333vw;
   text-align: center;
   margin-right: 4.53333vw;
   border-radius: 0.4vw;
+  font-size: 3.86667vw;
 }
 
 .order_list .order_item .single_item .item_footer .to_pay {
@@ -127,6 +129,7 @@
   border-radius: 0.4vw;
   line-height: 9.33333vw;
   text-align: center;
-  background: red;
+  background: #F02F45;
   color: #fff;
+  font-size: 3.86667vw;
 }
