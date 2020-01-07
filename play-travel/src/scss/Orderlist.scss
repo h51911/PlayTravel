@@ -3,10 +3,12 @@
 }
 
 .order_list {
-    height: 100%;
+    min-height: 100%;
     background: #F5F5F5;
     font-family: "Helvetica Neue",
         Helvetica;
+    padding-bottom: vw(93);
+    box-sizing: border-box;
 
 
     .order_nav {
@@ -63,7 +65,7 @@
 
 
         .single_item {
-            height: vw(426);
+            // height: vw(426);
             background: #fff;
             padding: vw(40) vw(31);
             margin-bottom: vw(27);
@@ -165,13 +167,69 @@
                     font-size: vw(29);
 
                 }
+
+                .item_delete {
+                    display: none;
+                }
             }
+        }
+
+        .single_item_overdue {
+            background: #FFFFFF;
+
+            .item_top {
+
+                .first_line {
+
+                    .item_status {
+                        color: #999999
+                    }
+
+                    .item_price {
+                        color: #F79CA7
+                    }
+                }
+
+                .second_line {
+                    .pay_limit {
+                        display: none;
+                    }
+                }
+            }
+
+            .item_center {
+                .item_title {
+                    color: #999999
+                }
+            }
+
+            .item_footer {
+                border-top: vw(2) solid #F5F5F5;
+
+                .cancel_order {
+                    display: none;
+                }
+
+                .to_pay {
+                    display: none;
+                }
+
+                .item_delete {
+                    height: vw(68);
+                    text-align: right;
+                    color: #EB7772;
+                    line-height: vw(68);
+                    display: block;
+                    font-size: vw(27);
+                }
+
+            }
+
+
+
         }
 
     }
 
-    .order_item_overdue {
-        background: #FFFFFF;
 
-    }
 }

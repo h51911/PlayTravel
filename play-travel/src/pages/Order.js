@@ -29,6 +29,17 @@ class Order extends Component {
                 product_id: "14443",
                 payment_time_limit: "2020-01-06 16:37:15",
                 tour_date: "2020-01-08"
+            },
+            {
+                order_id: "1344420",
+                product_name: "【3天2晚】厦门海悦山庄酒店（含早+下午茶+儿童乐园+观光车店内游+亲子房布置）",
+                total: "1698.00",
+                date_added: "2020-01-06 16:07:15",
+                status_id: "25",
+                status_name: "已过支付有效期",
+                product_id: "14443",
+                payment_time_limit: "2020-01-06 16:37:15",
+                tour_date: "2020-01-08"
             }
         ],
 
@@ -52,10 +63,10 @@ class Order extends Component {
                 </ul>
             </div>
             <div className="order_item">
-                {/* {console.log(currentIdx)}
+                {/* {console.log(currentIdx)} */}
                 {datalist.map((item) => {
                     if (currentIdx === 0) {
-                        return <div className="single_item" key={item.order_id}>
+                        return <div className={item.status_id === '25' ? "single_item_overdue single_item" : "single_item"} key={item.order_id}>
                             <div className="item_top">
                                 <p className="clearfix first_line ">
                                     <span className="item_status">{item.status_name}</span>
@@ -70,14 +81,16 @@ class Order extends Component {
                                 <p className="item_title">{item.product_name}</p>
                                 <p className="item_time">出行日期:{item.tour_date}</p>
                                 <p className="item_mount">购买数量:套餐份数×1</p>
-                                <p></p>
+
                             </div>
                             <div className="item_footer">
                                 <span className="cancel_order">取消订单</span>
                                 <span className="to_pay">去支付</span>
+                                <p className="item_delete"><span className='iconfont icon-shanchu'></span>删除订单</p>
                             </div>
                         </div>
-                    } else if (currentIdx === 1) {
+                    }
+                    else if (currentIdx === 1) {
                         if (item.status_id === '1') {
                             return <div className="single_item" key={item.order_id}>
                                 <div className="item_top">
@@ -99,37 +112,15 @@ class Order extends Component {
                                 <div className="item_footer">
                                     <span className="cancel_order">取消订单</span>
                                     <span className="to_pay">去支付</span>
+                                    <p className="item_delete"><span className='iconfont icon-shanchu'></span>删除订单</p>
                                 </div>
                             </div>
                         }
+                    } else if (currentIdx === 2) {
+                        return 666
                     }
-                })} */}
 
-
-
-
-                <div className="single_item">
-                    <div className="item_top">
-                        <p className="clearfix first_line ">
-                            <span className="item_status">未支付</span>
-                            <span className="item_price">￥1698</span>
-                        </p>
-                        <p className="second_line clearfix">
-                            <span className='order_num fl'>订单号:1344410</span>
-                            <span className="pay_limit fr">请在16:37前支付</span>
-                        </p>
-                    </div>
-                    <div className="item_center">
-                        <p className="item_title">【3天2晚】厦门海悦山庄酒店（含早+下午茶+儿童乐园+观光车店内游+亲子房布置）</p>
-                        <p className="item_time">出行日期:2020-01-16</p>
-                        <p className="item_mount">购买数量:套餐份数×1</p>
-                        <p></p>
-                    </div>
-                    <div className="item_footer">
-                        <span className="cancel_order">取消订单</span>
-                        <span className="to_pay">去支付</span>
-                    </div>
-                </div>
+                })}
             </div>
         </div >
 
