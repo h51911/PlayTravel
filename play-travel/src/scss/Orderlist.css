@@ -1,7 +1,9 @@
 .order_list {
-  height: 100%;
+  min-height: 100%;
   background: #F5F5F5;
   font-family: "Helvetica Neue", Helvetica;
+  padding-bottom: 12.4vw;
+  box-sizing: border-box;
 }
 
 .order_list .order_nav {
@@ -46,7 +48,6 @@
 }
 
 .order_list .order_item .single_item {
-  height: 56.8vw;
   background: #fff;
   padding: 5.33333vw 4.13333vw;
   margin-bottom: 3.6vw;
@@ -137,6 +138,47 @@
   font-size: 3.86667vw;
 }
 
-.order_list .order_item_overdue {
+.order_list .order_item .single_item .item_footer .item_delete {
+  display: none;
+}
+
+.order_list .order_item .single_item_overdue {
   background: #FFFFFF;
+}
+
+.order_list .order_item .single_item_overdue .item_top .first_line .item_status {
+  color: #999999;
+}
+
+.order_list .order_item .single_item_overdue .item_top .first_line .item_price {
+  color: #F79CA7;
+}
+
+.order_list .order_item .single_item_overdue .item_top .second_line .pay_limit {
+  display: none;
+}
+
+.order_list .order_item .single_item_overdue .item_center .item_title {
+  color: #999999;
+}
+
+.order_list .order_item .single_item_overdue .item_footer {
+  border-top: 0.26667vw solid #F5F5F5;
+}
+
+.order_list .order_item .single_item_overdue .item_footer .cancel_order {
+  display: none;
+}
+
+.order_list .order_item .single_item_overdue .item_footer .to_pay {
+  display: none;
+}
+
+.order_list .order_item .single_item_overdue .item_footer .item_delete {
+  height: 9.06667vw;
+  text-align: right;
+  color: #EB7772;
+  line-height: 9.06667vw;
+  display: block;
+  font-size: 3.6vw;
 }
