@@ -6,17 +6,13 @@ import {
     Input,
     Tooltip,
     Icon,
-    Divider,
-    Menu
+    Divider
 } from 'antd';
 import City from '../components/DestinationList';
 import My from '../api/myweb';
 import '../scss/destination.css';
 import 'antd/dist/antd.css';
 
-const {
-    SubMenu
-} = Menu;
 
 class Destination extends Component {
     constructor(props) {
@@ -74,7 +70,6 @@ class Destination extends Component {
     changeType = (object) => {
         let { activeKey, index } = object;
         this.props.history.replace('/destination/' + activeKey);
-        this.state.currentIdx = index;
         let hots = this.state.menu[index].hots;
         this.setState({
             currentIdx: index,
