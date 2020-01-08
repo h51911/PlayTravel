@@ -1,0 +1,67 @@
+@function vw($px) {
+    @return ($px / 750) * 100vw;
+}
+
+
+
+.orderdetail {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    z-index: 9999;
+
+    .container {
+        .detail_top {
+            padding: vw(40);
+
+            h2 {
+                font-size: vw(42);
+                line-height: vw(52);
+                font-weight: 600;
+                margin-bottom: vw(36);
+
+            }
+
+            .order_id {
+                font-size: vw(27);
+                line-height: vw(27);
+                color: #999999;
+                margin-bottom: vw(18);
+            }
+
+            .order_date {
+                font-size: vw(27);
+                line-height: vw(27);
+                color: #999999;
+            }
+
+            .pay_process {
+                margin-top: vw(55);
+                border-top: vw(2) solid #EEEEEE;
+                padding-top: vw(49);
+
+                .pay_state {
+                    color: #F24845;
+                    vertical-align: bottom;
+
+                    .payment {
+                        display: inline-block;
+                        font-size: vw(39);
+                        line-height: vw(39);
+                    }
+
+                    .payment_limit {
+                        display: inline-block;
+                        font-size: vw(26);
+                        line-height: vw(36);
+                        margin-top: vw(13);
+                    }
+                }
+            }
+        }
+    }
+
+}

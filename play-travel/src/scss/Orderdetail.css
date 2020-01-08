@@ -1,0 +1,57 @@
+.orderdetail {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: #fff;
+  z-index: 9999;
+}
+
+.orderdetail .container .detail_top {
+  padding: 5.33333vw;
+}
+
+.orderdetail .container .detail_top h2 {
+  font-size: 5.6vw;
+  line-height: 6.93333vw;
+  font-weight: 600;
+  margin-bottom: 4.8vw;
+}
+
+.orderdetail .container .detail_top .order_id {
+  font-size: 3.6vw;
+  line-height: 3.6vw;
+  color: #999999;
+  margin-bottom: 2.4vw;
+}
+
+.orderdetail .container .detail_top .order_date {
+  font-size: 3.6vw;
+  line-height: 3.6vw;
+  color: #999999;
+}
+
+.orderdetail .container .detail_top .pay_process {
+  margin-top: 7.33333vw;
+  border-top: 0.26667vw solid #EEEEEE;
+  padding-top: 6.53333vw;
+}
+
+.orderdetail .container .detail_top .pay_process .pay_state {
+  color: #F24845;
+  vertical-align: bottom;
+}
+
+.orderdetail .container .detail_top .pay_process .pay_state .payment {
+  display: inline-block;
+  font-size: 5.2vw;
+  line-height: 5.2vw;
+}
+
+.orderdetail .container .detail_top .pay_process .pay_state .payment_limit {
+  display: inline-block;
+  font-size: 3.46667vw;
+  line-height: 4.8vw;
+  margin-top: 1.73333vw;
+}
