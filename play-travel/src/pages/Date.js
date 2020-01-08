@@ -97,11 +97,6 @@ class Dately extends Component{
         const { value, selectedValue,num } = this.state;
         return(
             <div className="date">
-                {/* 选择数量日期 */}
-                <div className="">
-                <Icon type="left" />
-                请选择数量,日期
-                </div>
 
                 {/* 选择人数 */}
                 <div className="population">
