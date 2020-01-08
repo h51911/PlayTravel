@@ -16,12 +16,14 @@ import './css/base.css'
 import './scss/App.css';
 import './icon/iconfont.css';
 
+import My from './api/myweb';
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       hide: false,
+      token: true,
       selecteditem: '/discover',
       menu: [
         {
@@ -56,11 +58,16 @@ class App extends Component {
   changeMenu(current) {
     let path = this.state.menu[current].path;
     if (path !== this.state.selecteditem) {
-      this.setState({
-        selecteditem: path,
-        ...this.menu
-      })
-      this.props.history.push(path);
+      let arr_login = ['/mine', '/order'];
+      if (arr_login.some(val => val === path) && this.state.token === false) {
+        this.props.history.push('/login-phone');
+      } else {
+        this.setState({
+          selecteditem: path,
+          ...this.menu
+        })
+        this.props.history.push(path);
+      }
     }
   }
   isHidden = () => {
@@ -71,16 +78,38 @@ class App extends Component {
         this.setState({ hide: true });
     } else if (this.state.hide !== false) {
       this.setState({ hide: false });
-      if (path !== this.state.selecteditem)
-        this.setState({ selecteditem: path });
     }
+    // 底部高亮
+    if (this.props.location.pathname !== this.state.selecteditem)
+      this.setState({ selecteditem: this.props.location.pathname });
+  };
+  isToken = async () => {
+    let token = localStorage.getItem("TOKEN");
+    if (token) {
+      let { authorization } = JSON.parse(token);
+      let { data } = await My.post('/users/verify', { token: authorization });
+      if (data.code && this.state.token !== true) {
+        this.setState({ token: true });
+      }
+      else if (!data.code && this.state.token !== false) {
+        this.setState({ token: false });
+        localStorage.removeItem("TOKEN")
+      }
 
-  }
+    }
+  };
   componentDidMount() {
     this.isHidden();
+    this.isToken();
+    let path = this.props.location.pathname;
+    let arr_login = ['/mine', '/order'];
+    if (arr_login.some(val => val === path) && this.state.token === false) {
+      this.props.history.push('/login-phone');
+    }
   };
   componentDidUpdate() {
     this.isHidden();
+    this.isToken();
   }
   render() {
     let { menu, selecteditem, hide } = this.state

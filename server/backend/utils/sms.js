@@ -8,13 +8,13 @@ function randNum(n) {
     }
     return res;
 };
-let sendCode = randNum(6);
+// let sendCode = randNum(6);
 
 // 发送验证码
 async function sms(phone, code) {
     var client = new Core({
-        accessKeyId: 'LTAI4FqfaabZdvur98ueiSBU',
-        accessKeySecret: 'UqUIUATr3tOmBP1EAWPM586Ztv0VjE',
+        accessKeyId: 'LTAI4FeHzmjxrWvdbR9ZhRBX',
+        accessKeySecret: 'poc6eApYfdKb06gBETBhinRARwQKOZ',
         endpoint: 'https://dysmsapi.aliyuncs.com',
         apiVersion: '2017-05-25'
     });
@@ -22,9 +22,9 @@ async function sms(phone, code) {
     var params = {
         "RegionId": "cn-hangzhou",
         "PhoneNumbers": phone, //要发送的用户手机号
-        "SignName": "食行生鲜", //APP名称
-        "TemplateCode": "SMS_180357916", //短信模板ID
-        "TemplateParam": `{'code':${code}}`
+        "SignName": "玩途旅行", //APP名称
+        "TemplateCode": "SMS_177553456", //短信模板ID
+        "TemplateParam": `{'code':'${code}'}`
     }
 
     var requestOption = {
@@ -57,6 +57,6 @@ async function sms(phone, code) {
 }
 
 module.exports = {
-    sendCode,
+    randNum,
     sms
 };

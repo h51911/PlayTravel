@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import My from '../api/myweb';
 
 import { Input, Icon, message } from 'antd';
-
 import '../scss/login.scss';
 
 class LoginPass extends Component {
@@ -27,6 +27,7 @@ class LoginPass extends Component {
     // 失去焦点
     blur0 = () => { this.setState({ focus0: false }); };
     blur1 = () => { this.setState({ focus1: false }); };
+    goBack = () => { this.props.history.go(-1); };
     // 获取验证码
     getPassword = () => {
         console.log('获取验证码');
@@ -34,18 +35,26 @@ class LoginPass extends Component {
     // 通过手机登录
     byPhone = () => { this.props.history.push('/login-phone'); };
     // 密码登录
-    toLogin = () => {
+    toLogin = async () => {
         if (/^1[3-9]\d{9}$/.test(this.state.accout)) {
-            if (/^\d{6,}$/.test(this.state.password)) {
-                message.success('通过');
-                localStorage.setItem('TOKEN', `{"account":"${this.state.accout}","isLogin":"true"}`);
-                this.props.history.push('/discover');
-            } else {
-                message.info('请输入至少六位密码');
-            }
+            if (/^[0-9A-Za-z]{6,}$/.test(this.state.password)) {
+                // message.success('通过');
+                let { data } = await My.post('/users/login', {
+                    phone: this.state.accout,
+                    password: this.state.password
+                });
+                if (data.code) {
+                    localStorage.setItem('TOKEN', JSON.stringify({
+                        account: this.state.accout,
+                        isLogin: true,
+                        authorization: data.authorization
+                    }));
+                    message.success("登录成功");
+                    this.props.history.push('/discover');
+                } else message.error('用户名或密码错误');
+            } else message.error('请输入至少六位密码');
         }
-        else
-            message.info('请输入正确的手机号');
+        else message.error('请输入正确的手机号');
     };
     componentDidUpdate(prevProps, prevState) {
         // 登录按钮的颜色
@@ -62,7 +71,7 @@ class LoginPass extends Component {
         let { accout, password, isReg, focus0, focus1 } = this.state;
         return <div className="page-login">
             <header className="login-header">
-                <div className="link"><Icon type="left" /></div>
+                <div className="link" onClick={this.goBack}><Icon type="left" /></div>
                 <h1 className="h1">帐号密码登录</h1>
             </header>
             <main>

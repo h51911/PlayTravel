@@ -8,34 +8,25 @@
  */
 const express = require('express'); //模块访问：缓存
 const Router = express.Router(); //路由
-const {
-    formatData
-} = require('../utils/formatData'); //数据处理模块
-let {
-    mongo
-} = require('../db'); //引入操作数据库的模块
-let {
-    create,
-    verify
-} = require('../utils/token'); //生成token
-let {
-    sendCode,
-    sms
-} = require('../utils/sms'); //短信
+const { formatData } = require('../utils/formatData'); //数据处理模块
+let { mongo } = require('../db'); //引入操作数据库的模块
+let { create, verify } = require('../utils/token'); //生成token
+let { randNum, sms } = require('../utils/sms'); //短信
+let sendCode = null; //验证码
 
 // CORS请求头
-// Router.use((req, res, next) => {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
-//     res.header("Access-Control-Allow-Methods", "PUT,PATCH,POST,GET,DELETE,OPTIONS");
+Router.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+    res.header("Access-Control-Allow-Methods", "PUT,PATCH,POST,GET,DELETE,OPTIONS");
 
-//     // 跨域请求CORS中的预请求
-//     if (req.method == "OPTIONS") { //特殊请求：发送了请求头的那些请求
-//         res.sendStatus(200); /*让options请求快速返回*/
-//     } else {
-//         next();
-//     }
-// });
+    // 跨域请求CORS中的预请求
+    if (req.method == "OPTIONS") { //特殊请求：发送了请求头的那些请求
+        res.sendStatus(200); /*让options请求快速返回*/
+    } else {
+        next();
+    }
+});
 
 // 查询所有 /users
 Router.route('/').get(async (req, res) => {
@@ -71,14 +62,14 @@ Router.route('/check').get(async (req, res) => {
             code: 0
         }));
     else
-        res.send(formatData());
+        res.send(formatData({
+            message: `inexistence`
+        }));
 });
 
 // 删除 /del
 Router.route('/del').post(async (req, res) => {
-    let {
-        phone
-    } = req.body;
+    let { phone } = req.body;
     let result = await mongo.remove('users', {
         phone
     });
@@ -95,9 +86,7 @@ Router.route('/del').post(async (req, res) => {
 
 // 删除 /dels
 Router.route('/dels').post(async (req, res) => {
-    let {
-        delarr
-    } = req.body;
+    let { delarr } = req.body;
     let result = '';
     delarr.forEach(async item => {
         result = await mongo.remove('users', {
@@ -114,19 +103,22 @@ Router.route('/dels').post(async (req, res) => {
         }));
 });
 
+//验证原密码 users/pass
+Router.route('/pass').post(async (req, res) => {
+    let { phone, password } = req.body;
+    let result = await mongo.find('users', { phone, password });
+    if (result.length) {
+        res.send(formatData({
+            message: "原密码正确"
+        }));
+    } else
+        res.send(formatData({ code: 0 }));
+});
+
 // 修改密码
 Router.route('/edit').post(async (req, res) => {
-    let {
-        phone,
-        password,
-        address
-    } = req.body;
-    let result = await mongo.update('users', {
-        phone
-    }, {
-        password,
-        address
-    });
+    let { phone, password, email } = req.body;
+    let result = await mongo.update('users', { phone }, { password, email });
     if (result.modifiedCount)
         res.send(formatData({
             message: "修改成功"
@@ -137,11 +129,10 @@ Router.route('/edit').post(async (req, res) => {
         }));
 });
 
-//验证码 users/code
+// 发送验证码 users/code
 Router.route('/code').post(async (req, res) => {
-    let {
-        phone
-    } = req.body;
+    let { phone } = req.body;
+    sendCode = randNum(6);
     let result = await sms(phone, sendCode);
     // console.log(result, sendCode);
     if (result.Code == "OK") {
@@ -150,16 +141,14 @@ Router.route('/code').post(async (req, res) => {
         }));
     } else
         res.send(formatData({
-            code: 0
+            code: 0,
+            message: result.Message
         }));
 });
 
-// 验证验证码 users/verifycode
+// 验证码登录 users/verifycode
 Router.route('/verifycode').post(async (req, res) => {
-    let {
-        phone,
-        code
-    } = req.body;
+    let { phone, code } = req.body;
     let result = code == sendCode;
     // console.log(result);
     if (result) {
@@ -175,41 +164,27 @@ Router.route('/verifycode').post(async (req, res) => {
 
 //登陆 users/login
 Router.route('/login').post(async (req, res) => {
-    let {
-        phone,
-        password
-    } = req.body;
+    let { phone, password } = req.body;
     let result = await mongo.find('users', {
         phone,
         password
     });
     if (result.length) {
         let token = create(phone, 604800);
-        res.send(formatData({
-            authorization: token
-        }));
+        res.send(formatData({ authorization: token }));
     } else
-        res.send(formatData({
-            code: 0
-        }));
+        res.send(formatData({ code: 0 }));
 });
 
 // 验证token
 Router.post('/verify', (req, res) => {
-    let {
-        token
-    } = req.body;
+    let { token } = req.body;
     let result = verify(token);
     // console.log(result);//校验是否通行
     if (result) //可以直接登陆
-        res.send(formatData({
-            message: "Token有效"
-        }));
+        res.send(formatData({ message: "Token有效" }));
     else
-        res.send(formatData({
-            code: 0,
-            message: "Token失效"
-        }))
+        res.send(formatData({ code: 0, message: "Token失效" }));
 });
 
 module.exports = Router;
