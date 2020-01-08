@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server",
+  "main": "sever.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dm",
+  "license": "ISC",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.9",
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^0.20.0",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "mongodb": "^3.4.0"
+  }
+}
