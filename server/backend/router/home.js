@@ -59,5 +59,16 @@ Router.route('/').get(async (req, res) => {
         }));
 });
 
+Router.get('/order', async (req, res) => {
+    let result = await mongo.find('order', req.query);//调用封装好的find方法，查询数据并返回给前端 [{},{},{}]
+    // console.log( req.query);
+    if (result.length) {
+        //成功
+        res.send(formatData({ data: result }));
+    } else {
+        //失败
+        res.send(formatData({ code: 0 }));
+    }
 
+});
 module.exports = Router;
