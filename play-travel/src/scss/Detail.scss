@@ -40,7 +40,7 @@ html,body{
           }
       }
       .goods{
-        padding: 0 vw(40);
+        padding: 0 vw(40) vw(40);
         
         //标题
         .dtTitle{
@@ -261,6 +261,55 @@ html,body{
 
             .mgb48{
                 margin-bottom: vw(48);
+            }
+        }
+
+        //预定须知
+        .reserve{
+            padding: vw(40) 0;
+            border-bottom: vw(2) solid #eee;
+            h4{
+                font-size: vw(36);
+                line-height: vw(36);
+                font-weight: 700;
+                &::after{
+                    content: '';
+                    display: block;
+                    width: vw(80);
+                    border-top: vw(2) solid #b3b3b3;
+                    margin-bottom: vw(40);
+                    margin-top: vw(22);
+                }
+            }
+            ol{
+                li{
+                    list-style: square;
+                    list-style-position: inside;
+                    font-size: vw(24);
+                    line-height: vw(30);
+                    color: #666666;
+                    margin-bottom: vw(12);
+                }
+            }
+
+            .fz24{
+                font-size: vw(24);
+                line-height: vw(30);
+                color: #666666;
+            }
+
+            .mgb20{
+                margin-bottom: vw(20);
+                font-size: vw(24);
+                line-height: vw(24);
+                font-weight: 600;
+            }
+
+            .fz34{
+                font-size: vw(34);
+                line-height: vw(34);
+                color: #666666;
+                margin-bottom: vw(8);
             }
         }
       }

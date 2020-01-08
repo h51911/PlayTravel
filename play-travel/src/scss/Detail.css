@@ -36,7 +36,7 @@ html, body {
 }
 
 .detail .goods {
-  padding: 0 5.33333vw;
+  padding: 0 5.33333vw 5.33333vw;
 }
 
 .detail .goods .dtTitle {
@@ -278,4 +278,53 @@ html, body {
 
 .detail .goods .hotelServer .mgb48 {
   margin-bottom: 6.4vw;
+}
+
+.detail .goods .reserve {
+  padding: 5.33333vw 0;
+  border-bottom: 0.26667vw solid #eee;
+}
+
+.detail .goods .reserve h4 {
+  font-size: 4.8vw;
+  line-height: 4.8vw;
+  font-weight: 700;
+}
+
+.detail .goods .reserve h4::after {
+  content: '';
+  display: block;
+  width: 10.66667vw;
+  border-top: 0.26667vw solid #b3b3b3;
+  margin-bottom: 5.33333vw;
+  margin-top: 2.93333vw;
+}
+
+.detail .goods .reserve ol li {
+  list-style: square;
+  list-style-position: inside;
+  font-size: 3.2vw;
+  line-height: 4vw;
+  color: #666666;
+  margin-bottom: 1.6vw;
+}
+
+.detail .goods .reserve .fz24 {
+  font-size: 3.2vw;
+  line-height: 4vw;
+  color: #666666;
+}
+
+.detail .goods .reserve .mgb20 {
+  margin-bottom: 2.66667vw;
+  font-size: 3.2vw;
+  line-height: 3.2vw;
+  font-weight: 600;
+}
+
+.detail .goods .reserve .fz34 {
+  font-size: 4.53333vw;
+  line-height: 4.53333vw;
+  color: #666666;
+  margin-bottom: 1.06667vw;
 }

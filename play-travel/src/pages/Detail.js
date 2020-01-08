@@ -169,7 +169,21 @@ class Detail extends Component{
                         <p className="vw22">出发地至酒店的交通费用;</p>
                         <p className="vw22">个人消费:酒店内洗衣、理发、电话、传真、收费电视、饮品、烟酒等个人消费产生的费用;</p>
                         <p className="vw22">一切个人消费及费用包含中未提及的任何费用。</p>
-                    </div>        
+                    </div>   
+
+                    {/* 预定须知 */}
+                    <div className="reserve">
+                        <h4>预定须知</h4>
+                        <p className="mgb20">预定流程</p>
+                        <ol>
+                            <li>酒店预约：2个工作日内玩途客服会联系您，告知是否预约成功。若预约不成功,您可更改日期或选择退款</li>
+                            <li>预约告知：预约成功后，玩途将在出行前3个工作日发酒店确认单到您的邮箱,请注意查收</li>
+                        </ol>
+                        <p className="fz34">注意事项</p>
+                        <p className="fz24">订单确认之后,不可更改或取消;</p>
+                        <p className="fz24">请带好个人有效身份证件办理入住;</p>
+                        <p className="fz24">订单支付成功后，还需工作人员与酒店确认房态。如无法确认，将全额退款至您的支付帐户中</p>
+                    </div>
                 </div>
             </div>
         )
