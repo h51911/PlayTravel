@@ -205,7 +205,7 @@ html,body{
                 margin-bottom: vw(50);
                 .hotelContentImg{
                     width: vw(670);
-                    height: vw(376);
+                    // height: vw(376);
                     margin-bottom: vw(22);
                     img{
                         width: 100%;
@@ -314,4 +314,42 @@ html,body{
         }
       }
       
+      .buyNow{
+        width: 100%;
+        height: vw(100);
+        box-sizing: border-box;
+        border-top: vw(6) solid #dddddd;
+        display: flex;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        z-index: 6;//等下改
+        .advisory{
+            width: vw(136);
+            height: vw(94);
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            p{
+                height: vw(18);
+                font-size: vw(18);
+                font-weight: 600;
+            }
+        }
+        .buy{
+            width: vw(614);
+            height: vw(94);
+            background: #e96a65;
+            font-size: vw(32);
+            line-height: vw(94);
+            text-align: center;
+            color: #fff;
+            font-weight: 800;
+            cursor: pointer;
+        }
+      }
+
 }
