@@ -39,9 +39,19 @@
   color: #fff;
 }
 
+#discover main header .ant-input-affix-wrapper .ant-input-prefix {
+  left: 3.2vw;
+}
+
+#discover main header .ant-input-affix-wrapper i {
+  font-size: 3.73333vw;
+}
+
 #discover main header .ant-input-affix-wrapper .ant-input {
   border: none;
   box-shadow: none;
+  font-size: 3.73333vw;
+  padding-left: 8vw;
   background: rgba(0, 0, 0, 0.1);
 }
 

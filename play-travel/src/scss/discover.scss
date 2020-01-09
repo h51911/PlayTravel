@@ -36,10 +36,17 @@
                 width: vw(450);
                 height: vw(60);
                 color: #fff;
-
+                .ant-input-prefix{
+                    left: vw(24);
+                }
+                i{
+                    font-size: vw(28);
+                }
                 .ant-input {
                     border: none;
                     box-shadow: none;
+                    font-size: vw(28);
+                    padding-left: vw(60);
                     background: rgba(0, 0, 0, 0.1);
                 }
 
