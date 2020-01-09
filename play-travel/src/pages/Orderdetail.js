@@ -1,20 +1,33 @@
 import React, { Component } from 'react';
 import '../icon/iconfont.css'
-
+import { get } from '../api/myweb'
 import '../scss/Orderdetail.css'
 
 
 class Orderdetail extends Component {
+    state = {
+        data: []
+    }
 
+    async componentDidMount() {
+        let { id } = this.props.match.params
+        let { data } = await get('/order', { 'order_id': id })
+        this.setState({
+            data,
+        })
+
+
+    }
 
     render() {
-        console.log(this.props)
+        let data = this.state.data[0]
+        console.log(data)
         return (
             <div className="orderdetail">
                 <div className="container">
                     <div className="detail_top">
-                        <h2>新加坡S.E.A.海洋馆电子门票（电子票扫码入园）</h2>
-                        <p className='order_id'>订单号:1346013</p>
+                        <h2></h2>
+                        <p className='order_id'>订单号:</p>
                         <p className='order_date'>订单日期: 2020-01-08 14:05:00</p>
                         <div className="pay_process ">
                             <p className="pay_state clearfix">
