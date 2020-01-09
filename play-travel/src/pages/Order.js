@@ -13,7 +13,60 @@ class Order extends Component {
         data: [],
         deletebutton: false,
         navlist: ['全部订单', '待付款', '处理中', '已确认', '已退订'],
-        datalist: []
+        datalist: [
+            {
+                order_id: "1346859",
+                product_name: "【亲子玩乐】昆山裕元花园酒店（含早+欢迎水果，部分套餐可选蒙特利亲子乐园/自助晚餐）",
+                total: "969.00",
+                date_added: "2020-01-09 14:40:01",
+                status_id: "7",
+                status_name: "订单取消",
+                product_id: "15332",
+                payment_time_limit: "2020-01-09 15:10:01",
+                payment_url: "",
+                tour_date: "2020-01-11",
+                man_num: '2',
+                man_name: "王雨辰",
+                man_phone: "17722737541",
+                man_email: "1461875470@qq.com",
+                user: "王雨辰"
+            }, {
+                order_id: "1346869",
+                product_name: "【亲子玩乐】昆山裕元花园酒店（含早+欢迎水果，部分套餐可选蒙特利亲子乐园/自助晚餐）",
+                total: "969.00",
+                date_added: "2020-01-09 14:40:01",
+                status_id: "1",
+                status_name: "未支付",
+                product_id: "15332",
+                payment_time_limit: "2020-01-09 15:10:01",
+                payment_url: "",
+                tour_date: "2020-01-11",
+                man_num: '2',
+                man_name: "王雨辰",
+                man_phone: "17722737541",
+                man_email: "1461875470@qq.com",
+                user: "王雨辰"
+            },
+            {
+                order_id: "1346880",
+                product_name: "【亲子玩乐】昆山裕元花园酒店（含早+欢迎水果，部分套餐可选蒙特利亲子乐园/自助晚餐）",
+                total: "969.00",
+                date_added: "2020-01-09 14:40:01",
+                status_id: "1",
+                status_name: "未支付",
+                product_id: "15332",
+                payment_time_limit: "2020-01-09 15:10:01",
+                payment_url: "",
+                tour_date: "2020-01-11",
+                man_num: '2',
+                man_name: "王雨辰",
+                man_phone: "17722737541",
+                man_email: "1461875470@qq.com",
+                user: "王雨辰"
+
+            }
+
+        ]
     }
 
     changeNav = (idx) => {
@@ -55,26 +108,51 @@ class Order extends Component {
             deletebutton: false
         })
     }
-    confirmDelete = (id) => {
-        let data = this.state.datalist.filter(item => item.order_id !== id)
-        this.setState({
-            data,
-            deletebutton: false
-        })
+
+
+    getdata = async () => {
+        let { data } = await get('/order')
+
+        if (data) {
+            data.sort((a, b) => {
+                a = a.status_id * 1
+                b = b.status_id * 1
+                return a - b
+            })
+            this.setState({
+                datalist: data,
+                data
+            })
+        }
+
+
     }
 
-    async componentDidMount() {
-
-        let { data } = await get('/order')
-        this.setState({
-            datalist: data,
-            data
+    confirmDelete = async (id) => {
+        let data = await get('/order/deleteorder', {
+            'order_id': id
         })
+        console.log(data)
 
+        this.setState({
+            deletebutton: false
+        })
+        this.getdata()
+    }
+
+
+
+    componentDidMount() {
+        this.getdata()
     }
 
     getDetail = (id) => {
         this.props.history.push(`/order/${id}`)
+    }
+
+    gotoPay = (event) => {
+        event.stopPropagation()
+        console.log('去付款')
     }
 
     cancelOrder = (id, event) => {
@@ -115,7 +193,7 @@ class Order extends Component {
                     <div className="order_item">
                         {data.map((item) => {
                             return <div
-                                className={item.status_id === '25' ? "single_item_overdue single_item" : "single_item"}
+                                className={item.status_id !== "1" ? "single_item single_item_overdue " : "single_item"}
                                 key={item.order_id}
                                 onClick={item.status_id === '1' ? this.getDetail.bind(this, item.order_id) : () => { }}
 
@@ -138,7 +216,7 @@ class Order extends Component {
                                 </div>
                                 <div className="item_footer">
                                     <span className="cancel_order" onClick={this.cancelOrder.bind(this, item.order_id)}>取消订单</span>
-                                    <span className="to_pay">去支付</span>
+                                    <span className="to_pay" onClick={this.gotoPay}>去支付</span>
                                     <p className="item_delete" onClick={this.deleteItem}><span className='iconfont icon-shanchu' ></span>删除订单</p>
                                 </div>
                                 <div className="deletepopup" style={{ display: this.state.deletebutton ? "block" : 'none' }}>

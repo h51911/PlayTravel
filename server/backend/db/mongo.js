@@ -41,7 +41,7 @@ async function connect() {
  * @return: object
  */
 
- //插入
+//插入
 async function create(colname, data) {
     // console.log(data);
     let {
@@ -118,8 +118,8 @@ async function update(colname, query, newdata) {
  * @return: object
  */
 
- //排序
- //paixu：为排序的属性，例：{id：1/-1}
+//排序
+//paixu：为排序的属性，例：{id：1/-1}
 async function paixu(colname, qurey, paixu) {
     // console.log(paixu);
     try {
@@ -149,7 +149,7 @@ async function find(colname, qurey) {
         // console.log(result)
         client.close();
         return result;
-    } catch {
+    } catch (err) {
         return err;
     }
 }
@@ -187,7 +187,7 @@ async function mohu(colname, qurey) {
         } = await connect();
         let col = db.collection(colname);
         let name = new RegExp(title);
-        let result = await col.find({title:name}).limit(10).toArray();
+        let result = await col.find({ title: name }).limit(10).toArray();
         console.log(name)
         console.log(result)
         client.close();

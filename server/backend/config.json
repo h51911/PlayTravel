@@ -1,5 +1,6 @@
 {
     "PORT": 8087,
-    "MongoUrl": "mongodb://localhost:27017",
+    "HOST": "0.0.0.0",
+    "MongoUrl": "mongodb://10.3.140.156:27017",
     "ColName": "playtravel"
 }
