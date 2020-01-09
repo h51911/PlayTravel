@@ -56,7 +56,7 @@ class SetPass extends Component {
                 } else
                     message.error("请确认密码");
             } else
-                message.error("请输入新年密码");
+                message.error("请输入新密码");
         } else
             message.error("请输入原密码");
     }

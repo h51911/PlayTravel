@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Icon, message } from 'antd';
+import { Icon } from 'antd';
 
 import '../scss/mine.scss';
 

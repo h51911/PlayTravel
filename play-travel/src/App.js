@@ -95,7 +95,7 @@ class App extends Component {
       }
       else if (!data.code && this.state.token !== false) {
         this.setState({ token: false });
-        localStorage.removeItem("TOKEN")
+        localStorage.removeItem("TOKEN");
       }
 
     }

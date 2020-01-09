@@ -13,6 +13,13 @@
       "unicode_decimal": 58912
     },
     {
+      "icon_id": "436021",
+      "name": "账号管理",
+      "font_class": "zhanghaoguanli",
+      "unicode": "e80a",
+      "unicode_decimal": 59402
+    },
+    {
       "icon_id": "613530",
       "name": "联系人",
       "font_class": "circle-people",
@@ -20,11 +27,39 @@
       "unicode_decimal": 59023
     },
     {
+      "icon_id": "975385",
+      "name": "订单",
+      "font_class": "single",
+      "unicode": "e6bd",
+      "unicode_decimal": 59069
+    },
+    {
       "icon_id": "1054274",
       "name": "发现",
       "font_class": "faxian_empy",
       "unicode": "e669",
       "unicode_decimal": 58985
+    },
+    {
+      "icon_id": "1228433",
+      "name": "phone",
+      "font_class": "phone",
+      "unicode": "e6c2",
+      "unicode_decimal": 59074
+    },
+    {
+      "icon_id": "2076283",
+      "name": " 订单集合",
+      "font_class": "dingdanjihe",
+      "unicode": "e897",
+      "unicode_decimal": 59543
+    },
+    {
+      "icon_id": "2155817",
+      "name": "会员卡",
+      "font_class": "membership-card_icon",
+      "unicode": "e677",
+      "unicode_decimal": 58999
     },
     {
       "icon_id": "2248317",
@@ -41,11 +76,32 @@
       "unicode_decimal": 58908
     },
     {
+      "icon_id": "2553289",
+      "name": "lock",
+      "font_class": "lock",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    },
+    {
       "icon_id": "2686851",
       "name": "check",
       "font_class": "check1",
       "unicode": "e6a0",
       "unicode_decimal": 59040
+    },
+    {
+      "icon_id": "5192955",
+      "name": "优惠券",
+      "font_class": "youhuiquan",
+      "unicode": "e660",
+      "unicode_decimal": 58976
+    },
+    {
+      "icon_id": "6050679",
+      "name": "email",
+      "font_class": "email",
+      "unicode": "e628",
+      "unicode_decimal": 58920
     },
     {
       "icon_id": "6208491",
@@ -95,6 +151,13 @@
       "font_class": "wode",
       "unicode": "e690",
       "unicode_decimal": 59024
+    },
+    {
+      "icon_id": "8513832",
+      "name": "check",
+      "font_class": "open_icon_successx2",
+      "unicode": "e619",
+      "unicode_decimal": 58905
     },
     {
       "icon_id": "8554392",
