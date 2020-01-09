@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import My from '../api/myweb';
 
 import { Icon, Input, message } from 'antd';
-
 import '../scss/mine.scss';
 
 class SetPass extends Component {
@@ -34,6 +34,32 @@ class SetPass extends Component {
     blur0 = () => { this.setState({ focus0: false }); };
     blur1 = () => { this.setState({ focus1: false }); };
     blur2 = () => { this.setState({ focus2: false }); };
+    // 修改密码
+    setPass = async () => {
+        if (this.state.password) {
+            if (this.state.newpass) {
+                if (this.state.confimpass) {
+                    if (this.state.confimpass === this.state.newpass) {
+                        let phone = JSON.parse(localStorage.getItem("TOKEN")).account;
+                        let { data: verify } = await My.post('/users/pass', { phone, password: this.state.password });
+                        if (verify.code) {
+                            let { data: edit } = await My.post('/users/edit', { phone, password: this.state.newpass });
+                            if (edit.code) {
+                                message.success("修改成功，请重新登录");
+                                this.props.history.push('/login-pass');
+                            } else
+                                message.error("error：修改失败");
+                        } else
+                            message.error("原密码不正确");
+                    } else
+                        message.error("新密码与确认密码不一致");
+                } else
+                    message.error("请确认密码");
+            } else
+                message.error("请输入新密码");
+        } else
+            message.error("请输入原密码");
+    }
     render() {
         let { password, newpass, confimpass, focus0, focus1, focus2 } = this.state;
         return (<div className="set-pass">
@@ -80,7 +106,7 @@ class SetPass extends Component {
                         </label>
                     </div>
                 </div>
-                <div style={{ textAlign: 'right' }}><span className="set-submit">提交</span></div>
+                <div style={{ textAlign: 'right' }}><span className="set-submit" onClick={this.setPass}>提交</span></div>
             </main>
         </div>)
     }

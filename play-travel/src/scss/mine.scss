@@ -212,10 +212,16 @@
 
             .icon {
                 display: inline-block;
-                width: vw(20);
+                width: vw(28);
                 height: vw(20);
-                margin-right: vw(8);
-                background: #aaa;
+                // margin-right: vw(8);
+                text-align: center;
+            }
+
+            .iconfont {
+                font-size: vw(20);
+                line-height: vw(20);
+                color: #F02F45;
             }
 
             .row-con {
@@ -234,6 +240,7 @@
             height: vw(46);
         }
     }
+
 }
 
 .account {
@@ -285,6 +292,12 @@
             border: 1px solid #ddd;
             margin-right: vw(8);
             margin-top: vw(10);
+        }
+
+        .iconfont {
+            font-size: vw(14);
+            line-height: vw(28);
+            color: #e0e0e0;
         }
 
         .row-con {

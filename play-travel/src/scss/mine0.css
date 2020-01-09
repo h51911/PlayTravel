@@ -209,15 +209,10 @@
 
 .mine .mine-main .list-row .icon {
   display: inline-block;
-  width: 7.46667vw;
+  width: 5.33333vw;
   height: 5.33333vw;
-  text-align: center;
-}
-
-.mine .mine-main .list-row .iconfont {
-  font-size: 5.33333vw;
-  line-height: 5.33333vw;
-  color: #F02F45;
+  margin-right: 2.13333vw;
+  background: #aaa;
 }
 
 .mine .mine-main .list-row .row-con {
@@ -281,17 +276,14 @@
   display: inline-block;
   width: 8vw;
   height: 8vw;
+  font-size: 8vw;
+  line-height: 8vw;
+  color: #F02F45;
   border-radius: 50%;
   text-align: center;
   border: 1px solid #ddd;
   margin-right: 2.13333vw;
   margin-top: 2.66667vw;
-}
-
-.account .list-row .iconfont {
-  font-size: 3.73333vw;
-  line-height: 7.46667vw;
-  color: #e0e0e0;
 }
 
 .account .list-row .row-con {

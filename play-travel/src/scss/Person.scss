@@ -1,0 +1,96 @@
+@function vw($px) {
+    @return ($px / 750) * 100vw;
+}
+
+html,body{
+    height: 100%;
+}
+
+
+.person{
+    width: 100%;
+    .msg{
+        box-sizing: border-box;
+        padding: vw(40);
+       .fz32{
+           font-size: vw(32);
+           font-weight: 800;
+           line-height: vw(40);
+           margin-bottom: vw(30);
+       } 
+
+       .width160{
+           width: vw(160);
+       }
+       .fz18{
+           font-size: vw(18);
+       }
+
+       .lh30{
+           line-height: vw(30);
+       }
+
+       .gray{
+           color: #989898;
+       }
+
+       .black{
+           color: #000;
+       }
+
+       .mgb{
+           margin-bottom: vw(28);
+       }
+
+       .disfx{
+           display: flex;
+           justify-content: flex-start;
+           align-items: flex-start;
+       }
+
+       .disb{
+           display: block;
+       }
+
+       .mgr{
+            margin-right: vw(10);
+       }
+    }
+    .buyNow{
+        width: 100%;
+        height: vw(100);
+        box-sizing: border-box;
+        border-top: vw(6) solid #dddddd;
+        display: flex;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        z-index: 6;//等下改
+        .advisory{
+            width: vw(136);
+            height: vw(94);
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            p{
+                height: vw(18);
+                font-size: vw(18);
+                font-weight: 600;
+            }
+        }
+        .buy{
+            width: vw(614);
+            height: vw(94);
+            background: #e96a65;
+            font-size: vw(32);
+            line-height: vw(94);
+            text-align: center;
+            color: #fff;
+            font-weight: 800;
+            cursor: pointer;
+        }
+      }
+}

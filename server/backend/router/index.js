@@ -10,6 +10,8 @@ Router.use(express.urlencoded({
 const homeRouter = require('./home');
 const areaRouter = require('./area');
 const agencyRouter = require('./agency');
+const usersRouter = require('./users');
+const adminRouter = require('./admin');
 const listRouter = require('./list');
 const orderRouter = require('./order');
 
@@ -18,6 +20,8 @@ const orderRouter = require('./order');
 Router.use('/home', homeRouter);
 Router.use('/area', areaRouter);
 Router.use('/public', agencyRouter);
+Router.use('/users', usersRouter);
+Router.use('/admin', adminRouter);
 Router.use('/list', listRouter);
 Router.use('/order', orderRouter);
 
