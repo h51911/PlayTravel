@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-
 import { Icon } from 'antd';
-
 import '../scss/mine.scss';
+// import { withStorage } from '../utils/hoc';
 
 class Account extends Component {
     state = {

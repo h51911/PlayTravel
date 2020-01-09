@@ -33,7 +33,7 @@ class LoginPass extends Component {
         console.log('获取验证码');
     };
     // 通过手机登录
-    byPhone = () => { this.props.history.push('/login-phone'); };
+    byPhone = () => { this.props.history.push({ pathname: '/login-phone', query: this.props.location.query }); };
     // 密码登录
     toLogin = async () => {
         if (/^1[3-9]\d{9}$/.test(this.state.accout)) {
@@ -50,7 +50,7 @@ class LoginPass extends Component {
                         authorization: data.authorization
                     }));
                     message.success("登录成功");
-                    this.props.history.push('/discover');
+                    this.props.history.push(this.props.location.query.from || '/discover');
                 } else message.error('用户名或密码错误');
             } else message.error('请输入至少六位密码');
         }

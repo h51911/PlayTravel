@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-
 import { Icon, message } from 'antd';
-
 import '../scss/mine.scss';
+// import { withStorage } from '../utils/hoc';
 
 class Mine extends Component {
     state = {
@@ -16,15 +15,12 @@ class Mine extends Component {
     }
     logout = () => {
         localStorage.removeItem("TOKEN");
-        this.setState({ account: '' });
         message.info("已退出登录，自动返回首页");
         this.props.history.push('/discover');
     }
     componentDidMount() {
         if (localStorage.getItem("TOKEN"))
-            this.setState({ account: JSON.parse(localStorage.getItem("TOKEN")).account });
-        else
-            this.props.history.push('/login-phone');
+            this.setState({ account: JSON.parse(localStorage.getItem("TOKEN")).account })
     }
     render() {
         let { account } = this.state;
