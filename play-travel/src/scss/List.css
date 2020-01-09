@@ -24,6 +24,15 @@ html, body {
   right: 0;
 }
 
+.listBox .header .noBanner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: #ccc;
+}
+
 .listBox .header .search {
   width: 100%;
   height: 12.26667vw;

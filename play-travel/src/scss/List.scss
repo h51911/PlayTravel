@@ -29,6 +29,15 @@ html,body{
             right: 0;
         }
 
+        .noBanner{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            background: #ccc;
+        }
+
         .search{
             width: 100%;
             height: vw(92);

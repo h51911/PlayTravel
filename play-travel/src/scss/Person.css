@@ -1,25 +1,28 @@
+@charset "UTF-8";
 html, body {
   height: 100%;
 }
 
 .person {
   width: 100%;
+  background: #f1f1f1;
 }
 
 .person .msg {
   box-sizing: border-box;
-  padding: 5.33333vw;
+  padding: 10.66667vw 5.33333vw;
+  background: #fff;
 }
 
-.person .msg .fz32 {
-  font-size: 4.26667vw;
+.person .msg .fz36 {
+  font-size: 4.8vw;
   font-weight: 800;
   line-height: 5.33333vw;
   margin-bottom: 4vw;
 }
 
-.person .msg .width160 {
-  width: 21.33333vw;
+.person .msg .width200 {
+  width: 26.66667vw;
 }
 
 .person .msg .fz18 {
@@ -56,6 +59,17 @@ html, body {
   margin-right: 1.33333vw;
 }
 
+.person .personMsg {
+  padding: 5.33333vw 5.33333vw 53.33333vw;
+}
+
+.person .personMsg p {
+  font-size: 4.8vw;
+  line-height: 4.8vw;
+  font-weight: 600;
+  margin-bottom: 5.33333vw;
+}
+
 .person .buyNow {
   width: 100%;
   height: 13.33333vw;
@@ -69,7 +83,7 @@ html, body {
 }
 
 .person .buyNow .advisory {
-  width: 18.13333vw;
+  width: 29.33333vw;
   height: 12.53333vw;
   background: #fff;
   display: flex;
@@ -79,10 +93,19 @@ html, body {
   cursor: pointer;
 }
 
-.person .buyNow .advisory p {
-  height: 2.4vw;
-  font-size: 2.4vw;
+.person .buyNow .advisory p:nth-child(1) {
+  font-size: 5.33333vw;
+  color: #c36160;
   font-weight: 600;
+}
+
+.person .buyNow .advisory p:nth-child(1)::before {
+  content: "￥";
+}
+
+.person .buyNow .advisory p:nth-child(2) {
+  font-size: 1.6vw;
+  color: #9c9c9c;
 }
 
 .person .buyNow .buy {

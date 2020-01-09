@@ -16,7 +16,8 @@ class Dately extends Component {
     this.state = {
       value: moment(),
       selectedValue: moment(),
-      num: 1
+      num: 1,
+      id:""
     }
 
     this.onSelect = this.onSelect.bind(this)
@@ -71,6 +72,18 @@ class Dately extends Component {
     console.log(this.state.selectedValue.format('YYYY-MM-DD'));
   }
 
+  click(){
+    console.log(this.state.num);
+    console.log(this.state.selectedValue.format('YYYY-MM-DD'));
+    let data = JSON.parse(localStorage.getItem('data'))
+    data.man_num = this.state.num;
+    data.tour_date = this.state.selectedValue.format('YYYY-MM-DD');
+
+    localStorage.setItem('data',JSON.stringify(data));
+    let {match:{params}} = this.props;
+    this.props.history.push('/person/'+params.id)
+    
+  }
   componentDidMount() {
     //   获取当前日期
     let date = new Date();
@@ -129,8 +142,8 @@ class Dately extends Component {
             <p>咨询</p>
           </div>
           <div className="buy" onClick={this.click}>
-            立即购买
-                    </div>
+          下一步
+          </div>
         </div>
       </div>
     )

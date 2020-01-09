@@ -16,25 +16,37 @@ class List extends Component{
     constructor(props){
         super(props);
         this.state={
-            data:""
+            data:"",
+            products:[]
         }
 
         this.toDiscover=this.toDiscover.bind(this)
         this.toDestination=this.toDestination.bind(this)
+        this.toDetail=this.toDetail.bind(this)
     }
 
     async componentDidMount(){
-        console.log(this.props);
+        
         //获取路由的参数（保留）
-        // let {match:{params}} = this.props;
+        let {match:{params}} = this.props;
+
         let {data} = await myweb.get('/list',{
-            city_code:"CAN"
+            city_code:params.code
         })
-        let digi = data[0]
-        this.setState({
-            data:digi
-        })
+        if(data){
+            let digi = data[0]
+            let products = digi.products
+                this.setState({
+                    data:digi,
+                    products
+                })
+        }
+        console.log(666);
     }
+
+    // componentWillUnmount(){
+    //     myweb.source.cancel();
+    // }
 
     //跳转到首页
     toDiscover(){
@@ -45,16 +57,21 @@ class List extends Component{
     toDestination(){
         this.props.history.push('/destination')
     }
+    //跳转到详情页
+    toDetail(id){
+        this.props.history.push('/detail/' + id)
+        // console.log(id);
+    }
 
     render(){
         
         let {data} = this.state;
-        let {products} = this.state.data;
-        console.log(products);
+        let {products} = this.state;
         return(
             <div className="listBox">
                 <header className="header">
-                    <img className="listBanner" src={data.h5_image_url} alt=""></img>
+                    {data.h5_image_url?<img className="listBanner" src={data.h5_image_url} alt=""></img>:<div className="noBanner"></div>}
+                    
                     <div className="search">
                             <div className="title">
                                 <a href="###" className="logo" onClick={this.toDiscover}>
@@ -82,8 +99,8 @@ class List extends Component{
                     <TabPane tab="周边游" key="1">
                       <ul className="li">
                           {
-                              products?
-                              products.map(item=>(<li key={item.product_id}>
+                              products.length?
+                              products.map(item=>(<li key={item.product_id} onClick={this.toDetail.bind(this,item.product_id)}>
                                 <div>
                                     <img src={item.images[0].image_url} alt=""></img>
                                 </div>
