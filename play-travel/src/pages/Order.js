@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import '../scss/Orderlist.css';
-import '../icon/iconfont.css'
+import '../icon/iconfont.css';
+import { get } from '../api/myweb';
+
+
 
 
 class Order extends Component {
@@ -10,44 +13,7 @@ class Order extends Component {
         data: [],
         deletebutton: false,
         navlist: ['全部订单', '待付款', '处理中', '已确认', '已退订'],
-        datalist: [
-            {
-                order_id: "1345049",
-                product_name: "湖州慧心谷绿奢度假村（含早+酒店活动）",
-                total: "949.00",
-                date_added: "2020-01-07 11:14:51",
-                status_id: "1",
-                status_name: "未支付",
-                product_id: "15875",
-                payment_time_limit: "2020-01-07 11:44:51",
-                tour_date: "2020-01-15",
-
-            },
-            {
-                order_id: "1344410",
-                product_name: "【3天2晚】厦门海悦山庄酒店（含早+下午茶+儿童乐园+观光车店内游+亲子房布置）",
-                total: "1698.00",
-                date_added: "2020-01-06 16:07:15",
-                status_id: "25",
-                status_name: "已过支付有效期",
-                product_id: "14443",
-                payment_time_limit: "2020-01-06 16:37:15",
-                tour_date: "2020-01-08",
-
-            },
-            {
-                order_id: "1344420",
-                product_name: "【3天2晚】厦门海悦山庄酒店（含早+下午茶+儿童乐园+观光车店内游+亲子房布置）",
-                total: "1698.00",
-                date_added: "2020-01-06 16:07:15",
-                status_id: "25",
-                status_name: "已过支付有效期",
-                product_id: "14443",
-                payment_time_limit: "2020-01-06 16:37:15",
-                tour_date: "2020-01-08",
-            }
-        ],
-
+        datalist: []
     }
 
     changeNav = (idx) => {
@@ -97,10 +63,14 @@ class Order extends Component {
         })
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+
+        let { data } = await get('/order')
         this.setState({
-            data: this.state.datalist
+            datalist: data,
+            data
         })
+
     }
 
     getDetail = (id) => {
@@ -126,7 +96,7 @@ class Order extends Component {
         }
     }
 
-    
+
 
 
     render() {
