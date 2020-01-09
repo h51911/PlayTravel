@@ -16,7 +16,7 @@ import Dately from './pages/Date';
 import './css/base.css'
 import './scss/App.css';
 import './icon/iconfont.css';
- 
+
 
 class App extends Component {
   constructor(props) {
@@ -66,7 +66,7 @@ class App extends Component {
   }
   isHidden = () => {
     let path = this.props.location.pathname;
-    let arr_hide = ['/login-phone', '/login-pass', '/account', '/set-pass'];
+    let arr_hide = ['/login-phone', '/login-pass', '/account', '/set-pass',];
     if (arr_hide.some(val => val === path)) {
       if (this.state.hide !== true)
         this.setState({ hide: true });

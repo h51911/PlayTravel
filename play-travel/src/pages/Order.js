@@ -90,9 +90,9 @@ class Order extends Component {
         })
     }
     confirmDelete = (id) => {
-        let datalist = this.state.datalist.filter(item => item.order_id !== id)
+        let data = this.state.datalist.filter(item => item.order_id !== id)
         this.setState({
-            datalist,
+            data,
             deletebutton: false
         })
     }
@@ -125,6 +125,8 @@ class Order extends Component {
             window.alert('订单已取消')
         }
     }
+
+    
 
 
     render() {

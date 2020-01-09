@@ -11,6 +11,7 @@ const homeRouter = require('./home');
 const areaRouter = require('./area');
 const agencyRouter = require('./agency');
 const listRouter = require('./list');
+const orderRouter = require('./order');
 
 // 调用子路由
 // Router.use('/goods', goodsRouter);
@@ -18,6 +19,7 @@ Router.use('/home', homeRouter);
 Router.use('/area', areaRouter);
 Router.use('/public', agencyRouter);
 Router.use('/list', listRouter);
+Router.use('/order', orderRouter);
 
 // CORS请求头
 Router.use((req, res, next) => {
