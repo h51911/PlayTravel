@@ -51,7 +51,7 @@ class LoginPhone extends Component {
             message.error('请输入正确的手机号');
     }
     // 通过密码
-    byPass = () => { this.props.history.push('/login-pass') };
+    byPass = () => { this.props.history.push({ pathname: '/login-pass', query: this.props.location.query }) };
     toLogin = async () => {
         if (/^1[3-9]\d{9}$/.test(this.state.phone)) {
             if (/^\d{6}$/.test(this.state.code)) {
@@ -79,7 +79,7 @@ class LoginPhone extends Component {
                             message.error("error：注册失败");
                     }
                     message.success('登录成功');
-                    this.props.history.push('/discover');
+                    this.props.history.push(this.props.location.query.from || '/discover');
                     localStorage.setItem('TOKEN', JSON.stringify({
                         account: this.state.phone,
                         isLogin: true,

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import My from '../api/myweb';
-
 import { Icon, Input, message } from 'antd';
 import '../scss/mine.scss';
+import My from '../api/myweb';
+// import { withStorage } from '../utils/hoc';
 
 class SetPass extends Component {
     state = {
@@ -41,6 +41,7 @@ class SetPass extends Component {
                 if (this.state.confimpass) {
                     if (this.state.confimpass === this.state.newpass) {
                         let phone = JSON.parse(localStorage.getItem("TOKEN")).account;
+                        // let phone = JSON.parse(localStorage.getItem("TOKEN")).account;
                         let { data: verify } = await My.post('/users/pass', { phone, password: this.state.password });
                         if (verify.code) {
                             let { data: edit } = await My.post('/users/edit', { phone, password: this.state.newpass });
@@ -111,4 +112,5 @@ class SetPass extends Component {
         </div>)
     }
 }
+
 export default SetPass;
