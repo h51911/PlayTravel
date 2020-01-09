@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Icon } from 'antd';
+import { Icon, message } from 'antd';
 
 import '../scss/mine.scss';
 
@@ -11,17 +11,20 @@ class Mine extends Component {
     toAccount = () => {
         this.props.history.push('/account');
     }
+    toOrder = () => {
+        this.props.history.push('/order');
+    }
+    logout = () => {
+        localStorage.removeItem("TOKEN");
+        this.setState({ account: '' });
+        message.info("已退出登录，自动返回首页");
+        this.props.history.push('/discover');
+    }
     componentDidMount() {
-        // console.log(this);
-        // localStorage.setItem('TOKEN', `{"account":"178","isLogin":"true"}`)
-        let token = localStorage.getItem("TOKEN");
-        if (token) {
-            // axios
-            let { account } = JSON.parse(token);
-            this.setState({ account });
-        } else {
+        if (localStorage.getItem("TOKEN"))
+            this.setState({ account: JSON.parse(localStorage.getItem("TOKEN")).account });
+        else
             this.props.history.push('/login-phone');
-        }
     }
     render() {
         let { account } = this.state;
@@ -67,28 +70,28 @@ class Mine extends Component {
             <main className="mine-main">
                 <h2 className="h2">我的</h2>
                 <section className="mine-list">
-                    <section className="list-row">
-                        <span className="icon"></span>
+                    <section className="list-row" onClick={this.toOrder}>
+                        <span className="icon iconfont">&#xe6bd;</span>
                         <p className="row-con">我的订单</p>
                         <Icon type="right" style={{ paddingLeft: 8, color: '#ccc' }} />
                     </section>
                     <section className="list-row">
-                        <span className="icon"></span>
+                        <span className="icon iconfont">&#xe660;</span>
                         <p className="row-con">优惠券</p>
                         <Icon type="right" style={{ paddingLeft: 8, color: '#ccc' }} />
                     </section>
                     <section className="list-row" onClick={this.toAccount}>
-                        <span className="icon"></span>
+                        <span className="icon iconfont">&#xe80a;</span>
                         <p className="row-con">账号</p>
                         <Icon type="right" style={{ paddingLeft: 8, color: '#ccc' }} />
                     </section>
                     <section className="list-row">
-                        <span className="icon"></span>
+                        <span className="icon iconfont">&#xe897;</span>
                         <p className="row-con">常用出行人及地址</p>
                         <Icon type="right" style={{ paddingLeft: 8, color: '#ccc' }} />
                     </section>
                     <section className="list-row">
-                        <span className="icon"></span>
+                        <span className="icon iconfont">&#xe677;</span>
                         <p className="row-con"> 旅行+ 会员计划</p>
                         <Icon type="right" style={{ paddingLeft: 8, color: '#ccc' }} />
                     </section>
@@ -97,7 +100,7 @@ class Mine extends Component {
                 <h2 className="h2">联系玩途</h2>
                 <section className="mine-contact">
                     <section className="list-row">
-                        <span className="icon"></span>
+                        <span className="icon iconfont">&#xe6c2;</span>
                         <div className="row-con">
                             <p>玩途服务热线「海外」</p>
                             <p className="p2">语言: 中文 | 服务时间: 24小时</p>
@@ -105,7 +108,7 @@ class Mine extends Component {
                         <Icon type="right" style={{ paddingLeft: 8, color: '#ccc' }} />
                     </section>
                     <section className="list-row">
-                        <span className="icon"></span>
+                        <span className="icon iconfont">&#xe6c2;</span>
                         <div className="row-con">
                             <p>玩途服务热线「国内」</p>
                             <p className="p2">语言: 中文 | 服务时间: 24小时</p>
@@ -113,7 +116,7 @@ class Mine extends Component {
                         <Icon type="right" style={{ paddingLeft: 8, color: '#ccc' }} />
                     </section>
                 </section>
-                <section className="logout">退出登录</section>
+                <section className="logout" onClick={this.logout}>退出登录</section>
             </main>
         </div>
     }
