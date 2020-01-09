@@ -121,10 +121,10 @@ class App extends Component {
         <Route path='/account' component={Account} />
         <Route path='/set-pass' component={SetPass} />DatelyDately
         <Route path='/order' component={Order} />
-        <Route path='/list' component={List} />
-        <Route path='/detail' component={Detail} />
-        <Route path='/date' component={Dately} />
-        <Route path='/person' component={Person} />
+        <Route path='/list/:code' component={List} />
+        <Route path='/detail/:id' component={Detail} />
+        <Route path='/date/:id' component={Dately} />
+        <Route path='/person/:id' component={Person} />
         <Route path='/notfound' render={() => <h1>你访问的页面不存在</h1>} />
         <Redirect from='/' to='discover' exact />
         <Redirect to='notfound' />
