@@ -21,6 +21,19 @@ Router.get('/', async (req, res) => {
 
 });
 
+//添加订单
+Router.get('/addGood',async (req,res)=>{
+    console.log(req.query);
+    let result = await mongo.create('order',[req.query])
+    if (result.insertedCount) {
+        //成功
+        res.send(formatData());
+    } else {
+        //失败
+        res.send(formatData({ code: 0 }));
+    }
+});
+
 
 
 

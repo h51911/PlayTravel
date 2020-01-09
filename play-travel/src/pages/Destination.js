@@ -57,6 +57,7 @@ class Destination extends Component {
         this.changecity(hots);
     }
 
+
     stop(e) {
         e.stopPropagation();
     }

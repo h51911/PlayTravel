@@ -9,18 +9,21 @@ html,body{
 
 .person{
     width: 100%;
+    background: #f1f1f1;
     .msg{
+        // height: vw(400);
         box-sizing: border-box;
-        padding: vw(40);
-       .fz32{
-           font-size: vw(32);
+        padding: vw(80) vw(40);
+        background: #fff;
+       .fz36{
+           font-size: vw(36);
            font-weight: 800;
            line-height: vw(40);
            margin-bottom: vw(30);
        } 
 
-       .width160{
-           width: vw(160);
+       .width200{
+           width: vw(200);
        }
        .fz18{
            font-size: vw(18);
@@ -56,6 +59,17 @@ html,body{
             margin-right: vw(10);
        }
     }
+
+    .personMsg{
+        padding: vw(40) vw(40) vw(400);
+        p{
+           font-size: vw(36);
+           line-height: vw(36); 
+           font-weight: 600;
+           margin-bottom: vw(40);
+        }
+    }
+
     .buyNow{
         width: 100%;
         height: vw(100);
@@ -67,7 +81,7 @@ html,body{
         bottom: 0;
         z-index: 6;//等下改
         .advisory{
-            width: vw(136);
+            width: vw(220);
             height: vw(94);
             background: #fff;
             display: flex;
@@ -75,10 +89,22 @@ html,body{
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            p{
-                height: vw(18);
-                font-size: vw(18);
-                font-weight: 600;
+            p{  
+                &:nth-child(1){
+                    font-size: vw(40);
+                    color: #c36160;
+                    font-weight: 600;
+                    &::before{
+                        content: "￥";
+                    }
+                }
+
+                &:nth-child(2){
+                    // height: vw(18);
+                    font-size: vw(12);
+                    // font-weight: 600;
+                    color: #9c9c9c;
+                }
             }
         }
         .buy{
