@@ -11,7 +11,7 @@ let { mongo } = require('../db');//引入操作数据库的模块
 Router.get('/', async (req, res) => {
     // console.log(req)
     let result = await mongo.find('order', req.query);//调用封装好的find方法，查询数据并返回给前端 [{},{},{}]
-    // console.log( req.query);
+    console.log(result);
     if (result.length) {
         //成功
         res.send(formatData({ data: result }));
@@ -39,12 +39,15 @@ Router.get('/deleteorder', async (req, res) => {
 
 //取消订单
 Router.get('/cancelorder', async (req, res) => {
-    let result = await mongo.update('order', req.query, { $set: { status_id: "7", status_name: '取消订单' } });//调用封装好的find方法，查询数据并返回给前端 [{},{},{}]
-    // console.log( req.query);
+    // let result = await mongo.update('order', req.query, { $set: { status_id: "7", status_name: '取消订单' } });//调用封装好的find方法，查询数据并返回给前端 [{},{},{}]
+    console.log(req.query);
+    let result = await mongo.update('order', req.query, { status_id: "7", status_name: '订单取消' })
+    console.log(result)
+
     if (result.modifiedCount) {
-        res.send(formatdata({ message: `成功修改了${result.deletedCount}条数据` }))
+        res.send(formatData({ message: `成功修改了${result.deletedCount}条数据` }))
     } else {
-        res.send(formatdata({ code: 0 }))
+        res.send(formatData({ code: 0 }))
     }
 
 });

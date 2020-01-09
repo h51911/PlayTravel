@@ -22,8 +22,8 @@ class Order extends Component {
                 status_id: "7",
                 status_name: "订单取消",
                 product_id: "15332",
-                payment_time_limit: "2020-01-09 15:10:01",
-                payment_url: "",
+                pay_time_limit: "2020-01-09 15:10:01",
+
                 tour_date: "2020-01-11",
                 man_num: '2',
                 man_name: "王雨辰",
@@ -38,8 +38,8 @@ class Order extends Component {
                 status_id: "1",
                 status_name: "未支付",
                 product_id: "15332",
-                payment_time_limit: "2020-01-09 15:10:01",
-                payment_url: "",
+                pay_time_limit: "2020-01-09 15:10:01",
+
                 tour_date: "2020-01-11",
                 man_num: '2',
                 man_name: "王雨辰",
@@ -55,8 +55,7 @@ class Order extends Component {
                 status_id: "1",
                 status_name: "未支付",
                 product_id: "15332",
-                payment_time_limit: "2020-01-09 15:10:01",
-                payment_url: "",
+                pay_time_limit: "2020-01-09 15:10:01",
                 tour_date: "2020-01-11",
                 man_num: '2',
                 man_name: "王雨辰",
@@ -123,6 +122,11 @@ class Order extends Component {
                 datalist: data,
                 data
             })
+        } else {
+            this.setState({
+                datalist: [],
+                data: [],
+            })
         }
 
 
@@ -132,13 +136,20 @@ class Order extends Component {
         let data = await get('/order/deleteorder', {
             'order_id': id
         })
-        console.log(data)
+        console.log(666)
+        if (data.code) {
+            this.setState({
+                deletebutton: false
+            })
+            this.getdata()
+            console.log(888)
+        }
 
-        this.setState({
-            deletebutton: false
-        })
-        this.getdata()
     }
+
+    // componentDidUpdate() {
+    //     this.getdata()
+    // }
 
 
 
@@ -155,22 +166,20 @@ class Order extends Component {
         console.log('去付款')
     }
 
-    cancelOrder = (id, event) => {
+    cancelOrder = async (id, event) => {
 
         console.log(id, event)
         event.stopPropagation()
         let result = window.confirm('确定要取消此订单么');
         if (result) {
-            this.setState({
-                datalist: this.state.datalist.map(item => {
-                    if (item.order_id === id) {
-                        item.status_id = '25';
-                        item.status_name = "订单取消"
-                    }
-                    return item;
-                })
-            })
-            window.alert('订单已取消')
+            console.log(666)
+            let result = await get('/order/cancelorder', { 'order_id': id })
+            console.log(result)
+            if (result.code) {
+                this.getdata()
+                window.alert('订单已取消')
+            }
+
         }
     }
 
@@ -205,7 +214,7 @@ class Order extends Component {
                                     </p>
                                     <p className="second_line clearfix">
                                         <span className='order_num fl'>订单号:{item.order_id}</span>
-                                        <span className="pay_limit fr">请在{item.payment_time_limit.slice(10, 16)}前支付</span>
+                                        <span className="pay_limit fr">请在{item.pay_time_limit.slice(10, 16)}前支付</span>
                                     </p>
                                 </div>
                                 <div className="item_center">
