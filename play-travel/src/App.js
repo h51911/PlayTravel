@@ -74,6 +74,8 @@ class App extends Component {
   isHidden = () => {
     let path = this.props.location.pathname;
     let arr_hide = ['/login-phone', '/login-pass', '/account', '/set-pass',];
+    let selecteditem = '/' + path.split('/')[1];
+    // console.log(selecteditem);
     if (arr_hide.some(val => val === path)) {
       if (this.state.hide !== true)
         this.setState({ hide: true });
@@ -81,8 +83,9 @@ class App extends Component {
       this.setState({ hide: false });
     }
     // 底部高亮
-    if (this.props.location.pathname !== this.state.selecteditem)
-      this.setState({ selecteditem: this.props.location.pathname });
+    if (selecteditem !== this.state.selecteditem) {
+      this.setState({ selecteditem});
+    }
   };
   isToken = async () => {
     let path = this.props.location.pathname;
@@ -106,6 +109,13 @@ class App extends Component {
   componentDidUpdate() {
     this.isHidden();
     this.isToken();
+    // console.log(this.props.history.location.pathname);
+    // let pathname = this.props.history.location.pathname;
+    // let selecteditem = '/' + pathname.split('/')[1];
+    // console.log(selecteditem);
+    // this.setState({
+    //   selecteditem
+    // })
   }
   render() {
     let { menu, selecteditem, hide } = this.state
