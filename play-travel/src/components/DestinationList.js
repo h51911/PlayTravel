@@ -29,6 +29,12 @@ class DesList extends Component{
         this.props.history.push('/list/' + activeKey)
     }
 
+    componentWillUnmount = () => {
+        this.setState = (state, callback) => {
+            return;
+        };
+    }
+
     async changeType(pid) {
         let {
             data
