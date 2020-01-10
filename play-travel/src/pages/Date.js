@@ -104,7 +104,11 @@ class Dately extends Component {
     })
   }
 
-
+  componentWillUnmount = () => {
+    this.setState = (state,callback)=>{
+      return;
+    };
+}
 
   render() {
     const { value, selectedValue, num } = this.state;

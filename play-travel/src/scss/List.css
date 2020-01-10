@@ -147,6 +147,7 @@ html, body {
 .listBox .section .tabs .li li div:nth-child(1) {
   width: 29.86667vw;
   margin-right: 2.66667vw;
+  background: #ccc;
 }
 
 .listBox .section .tabs .li li div:nth-child(1) img {

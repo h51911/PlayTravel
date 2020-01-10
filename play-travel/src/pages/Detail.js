@@ -144,6 +144,12 @@ class Detail extends Component{
         
     }
 
+    componentWillUnmount = () => {
+        this.setState = (state,callback)=>{
+          return;
+        };
+    }
+    
     render(){
         let imgs = this.state.imgs;//轮播图
         let title = this.state.title;//套餐名

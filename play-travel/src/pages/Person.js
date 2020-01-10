@@ -107,7 +107,11 @@ class Person extends Component{
 
     async submit(){
       let data = JSON.parse(localStorage.getItem('data'));
-      let {man_name,man_phone,man_email} = this.state;
+      let {man_name,man_phone,man_email,error} = this.state;
+      
+      let isok = Array.isArray(error);
+      console.log(isok);
+      console.log(error);
       if(this.state.error.length){
         alert('请确认信息是否输入正确');
       }else{
@@ -115,11 +119,17 @@ class Person extends Component{
         data.man_phone = man_phone;
         data.man_email = man_email;
 
-        let res = await myweb.get('/list/addGood',data)
-        if(res){
-          this.props.history.push('/order');
-        }
+        // let res = await myweb.get('/list/addGood',data)
+        // if(res){
+        //   this.props.history.push('/order');
+        // }
       }
+    }
+
+    componentWillUnmount = () => {
+      this.setState = (state,callback)=>{
+        return;
+      };
     }
 
     render(){

@@ -40,13 +40,39 @@ class List extends Component{
                     data:digi,
                     products
                 })
-        }
+        }else{
+            this.setState({
+                data:"",
+                products:[]
+            })
+            }
+        // await myweb.get('/list',{
+        //     city_code:params.code
+        // }).then(data=>{
+        //     if(data){
+        //         let digi = data[0];
+        //         let products = digi.products;
+        //         this.setState({
+        //             data:digi,
+        //             products:products
+        //         })
+        //     }else{
+        //         this.setState({
+        //             data:"",
+        //             products:[]
+        //         })
+        //     }
+        // })
+
+
         console.log(666);
     }
-
-    // componentWillUnmount(){
-    //     myweb.source.cancel();
-    // }
+    
+    componentWillUnmount = () => {
+        this.setState = (state,callback)=>{
+          return;
+        };
+    }
 
     //跳转到首页
     toDiscover(){
@@ -102,7 +128,7 @@ class List extends Component{
                               products.length?
                               products.map(item=>(<li key={item.product_id} onClick={this.toDetail.bind(this,item.product_id)}>
                                 <div>
-                                    <img src={item.images[0].image_url} alt=""></img>
+                                    {item.images?<img src={item.images[0].image_url} alt=""></img>:''}
                                 </div>
                                 <div>
                                     <p>{item.alias}</p>
