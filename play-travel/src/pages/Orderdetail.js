@@ -10,13 +10,15 @@ class Orderdetail extends Component {
         data: []
     }
 
-    async componentWillMount() {
+    async componentDidMount() {
         let { id } = this.props.match.params
         let { data } = await get('/order', { 'order_id': id })
         this.setState({
             data,
         })
     }
+
+
 
     render() {
         let data = this.state.data[0]

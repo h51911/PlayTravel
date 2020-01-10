@@ -157,6 +157,12 @@ class Order extends Component {
         this.getdata()
     }
 
+    componentWillUnmount = () => {
+        this.setState = (state, callback) => {
+            return;
+        };
+    }
+
     getDetail = (id) => {
         this.props.history.push(`/order/${id}`)
     }
