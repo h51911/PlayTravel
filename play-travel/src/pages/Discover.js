@@ -78,7 +78,11 @@ class Discover extends Component {
         })
         // console.log(data);
     }
-
+    componentWillUnmount = () => {
+        this.setState = (state, callback) => {
+            return;
+        };
+    }
     render() {
         return <div id="discover">
             

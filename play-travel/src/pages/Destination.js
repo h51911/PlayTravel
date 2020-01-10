@@ -56,7 +56,11 @@ class Destination extends Component {
         this.changeType(obj);
         this.changecity(hots);
     }
-
+    componentWillUnmount = () => {
+        this.setState = (state, callback) => {
+            return;
+        };
+    }
 
     stop(e) {
         e.stopPropagation();
