@@ -61,6 +61,9 @@ class SetPass extends Component {
         } else
             message.error("请输入原密码");
     }
+    componentWillUnmount() {
+        this.setState = (state, callback) => { return; }
+    }
     render() {
         let { password, newpass, confimpass, focus0, focus1, focus2 } = this.state;
         return (<div className="set-pass">
