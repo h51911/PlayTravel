@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
-
-import Login from './pages/login';
-import Home from './pages/home';
-
+import { Icon } from 'antd';
 import './scss/App.css';
-import 'antd/dist/antd.css';
+
+const Login = lazy(() => import('./pages/login'));
+const Home = lazy(() => import('./pages/home'));
 
 class App extends Component {
   token = () => {
     let path = this.props.location.pathname;
-    if (!localStorage.getItem("TOKEN") && !/^\/login$/.test(path))
+    if (!localStorage.getItem("TOKEN_WANTU_BG") && !/^\/login$/.test(path))
       this.props.history.push('/login');
   }
   componentDidMount() {
@@ -20,16 +19,18 @@ class App extends Component {
     this.token();
   }
   render() {
-    let token = localStorage.getItem("TOKEN");
+    let token = localStorage.getItem("TOKEN_WANTU_BG");
     return (
       <div className="App">
-        <Switch>
-          <Route path='/login' component={Login} />
-          <Route path='/home' component={Home} />
-          <Route path='/notfound' render={() => <h1>你访问的页面不存在</h1>} />
-          <Redirect from='/' to={token ? 'home' : 'login'} exact />
-          <Redirect to='/' />
-        </Switch>
+        <Suspense fallback={<Icon type="loading" />}>
+          <Switch>
+            <Route path='/login' component={Login} />
+            <Route path='/home' component={Home} />
+            <Route path='/notfound' render={() => <h1>你访问的页面不存在</h1>} />
+            <Redirect from='/' to={token ? 'home' : 'login'} exact />
+            <Redirect to='/' />
+          </Switch>
+        </Suspense>
       </div>
     );
   }

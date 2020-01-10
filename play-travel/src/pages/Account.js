@@ -18,6 +18,9 @@ class Account extends Component {
         } else
             this.props.history.push('/login-phone');
     }
+    componentWillUnmount() {
+        this.setState = (state, callback) => { return; }
+    }
     render() {
         let { phone } = this.state;
         return (<div className="account">

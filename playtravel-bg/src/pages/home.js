@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { Col, Row, Menu, Icon, Button, PageHeader } from 'antd';
 
-import Goodslist from './goodslist';
-import Destination from './destination';
-import Order from './orderlist';
-import Addgood from './addgoods';
-import UsersList from './userslist';
-
 const { SubMenu } = Menu;
+const Goodslist = lazy(() => import('./goodslist'));
+const Destination = lazy(() => import('./destination'));
+const Order = lazy(() => import('./orderlist'));
+const Addgood = lazy(() => import('./addgoods'));
+const AddUser = lazy(() => import('./add-user'));
+const UsersList = lazy(() => import('./userslist'));
+
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -82,11 +83,14 @@ class Home extends Component {
         }
     };
     logout = () => {
-        localStorage.removeItem("TOKEN");
+        localStorage.removeItem("TOKEN_WANTU_BG");
         this.props.history.push('/login');
     }
     toLogin = () => {
         this.props.history.push('/login');
+    }
+    componentWillUnmount() {
+        this.setState = (state, callback) => { return; }
     }
     render() {
         let { routes } = this.state;
@@ -126,8 +130,8 @@ class Home extends Component {
                             </span>
                         }
                     >
-                        <Menu.Item key="5">用户列表</Menu.Item>
-                        <Menu.Item key="6">添加用户</Menu.Item>
+                        <Menu.Item key="/user" onClick={this.changeType.bind(this)}>用户列表</Menu.Item>
+                        <Menu.Item key="/add-user" onClick={this.changeType.bind(this)}>添加用户</Menu.Item>
                     </SubMenu>
                     <SubMenu
                         key="sub4"
@@ -149,7 +153,7 @@ class Home extends Component {
                         height: '91px',
                         border: '1px solid rgb(235, 237, 240)',
                     }}
-                    extra={localStorage.getItem("TOKEN") ?
+                    extra={localStorage.getItem("TOKEN_WANTU_BG") ?
                         [<Button key="3" onClick={this.logout}>退出</Button>] :
                         [<Button key="2" onClick={this.toLogin}>登录</Button>]
                         // <Button key="1" type="primary"> 注册 </Button>,
@@ -158,16 +162,19 @@ class Home extends Component {
                     breadcrumb={{ routes }}
                 >
                 </PageHeader>
-                <Switch>
-                    <Route path={match.path + '/destination'} component={Destination} />
-                    <Route path={match.path + '/goodlist'} component={Goodslist} />
-                    <Route path={match.path + '/order'} component={Order} />
-                    <Route path={match.path + '/user'} component={UsersList} />
-                    <Route path={match.path + '/add'} component={Addgood} />
-                    <Route path='/notfound' render={() => <h1>你访问的页面不存在</h1>} />
-                    <Redirect from='/home' to={match.path + '/goodlist'} exact />
-                    <Redirect to='notfound' />
-                </Switch>
+                <Suspense fallback={<Icon type="loading" />}>
+                    <Switch>
+                        <Route path={match.path + '/destination'} component={Destination} />
+                        <Route path={match.path + '/goodlist'} component={Goodslist} />
+                        <Route path={match.path + '/order'} component={Order} />
+                        <Route path={match.path + '/user'} component={UsersList} />
+                        <Route path={match.path + '/add-user'} component={AddUser} />
+                        <Route path={match.path + '/add'} component={Addgood} />
+                        <Route path='/notfound' render={() => <h1>你访问的页面不存在</h1>} />
+                        <Redirect from='/home' to={match.path + '/goodlist'} exact />
+                        <Redirect to='notfound' />
+                    </Switch>
+                </Suspense>
             </Col>
         </Row>
 

@@ -11,7 +11,7 @@ class Login extends Component {
                 let { name, psw, keep } = values;
                 let { data } = await My.post('/admin/login', { name, psw, keep });
                 if (data.code) {
-                    localStorage.setItem('TOKEN', JSON.stringify({
+                    localStorage.setItem('TOKEN_WANTU_BG', JSON.stringify({
                         admin: name,
                         isLogin: true,
                         authorization: data.authorization
@@ -23,6 +23,9 @@ class Login extends Component {
             }
         });
     };
+    componentWillUnmount() {
+        this.setState = (state, callback) => { return; }
+    }
     render() {
         const { getFieldDecorator } = this.props.form;
         return <div id="login">
@@ -35,6 +38,7 @@ class Login extends Component {
                         <Input
                             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.5)' }} />}
                             placeholder="Name"
+                            autoComplete="off"
                         />,
                     )}
                 </Form.Item>
