@@ -17,8 +17,11 @@ class Orderdetail extends Component {
             data,
         })
     }
-
-
+    componentWillUnmount = () => {
+        this.setState = (state, callback) => {
+            return;
+        };
+    }
 
     render() {
         let data = this.state.data[0]
