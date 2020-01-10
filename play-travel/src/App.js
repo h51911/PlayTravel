@@ -1,24 +1,25 @@
-import React, { Component } from 'react';
+import React, {Component ,Suspense, lazy } from "react";
 
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
-import Destination from './pages/Destination';
-import Discover from './pages/Discover';
-import Mine from './pages/Mine';
-import LoginPhone from './pages/Login-phone';
-import LoginPass from './pages/Login-pass';
-import Account from './pages/Account';
-import SetPass from './pages/Set-pass';
-import Order from './pages/Order';
-import Orderdetail from './pages/Orderdetail';
-import List from './pages/List';
-import Detail from './pages/Detail';
-import Dately from './pages/Date';
-import Person from './pages/Person';
+
 import './css/base.css'
 import './scss/App.css';
 import './icon/iconfont.css';
 
 import My from './api/myweb';
+ const Destination = lazy(() =>import('./pages/Destination'));
+ const Discover = lazy(() => import('./pages/Discover'));
+ const Mine = lazy(() => import('./pages/Mine'));
+ const LoginPhone = lazy(() => import('./pages/Login-phone'));
+ const LoginPass = lazy(() => import('./pages/Login-pass'));
+ const Account = lazy(() => import('./pages/Account'));
+ const SetPass = lazy(() => import('./pages/Set-pass'));
+ const Order = lazy(() => import('./pages/Order'));
+ const Orderdetail = lazy(() => import('./pages/Orderdetail'));
+ const List = lazy(() => import('./pages/List'));
+ const Detail = lazy(() => import('./pages/Detail'));
+ const Dately = lazy(() => import('./pages/Date'));
+ const Person = lazy(() => import('./pages/Person'));
 // import { withStorage } from './utils/hoc';
 
 class App extends Component {
@@ -75,6 +76,9 @@ class App extends Component {
     let path = this.props.location.pathname;
     let arr_hide = ['/login-phone', '/login-pass', '/account', '/set-pass',];
     let selecteditem = '/' + path.split('/')[1];
+    if (selecteditem === "/list") {
+      selecteditem ="/destination"
+    }
     // console.log(selecteditem);
     if (arr_hide.some(val => val === path)) {
       if (this.state.hide !== true)
@@ -121,6 +125,7 @@ class App extends Component {
     let { menu, selecteditem, hide } = this.state
 
     return <div className="app">
+      <Suspense fallback={<div>loading...</div>}>
       <Switch>
         <Route path='/destination' component={Destination} />
         <Route path='/discover' component={Discover} />
@@ -139,6 +144,7 @@ class App extends Component {
         <Redirect from='/' to='discover' exact />
         <Redirect to='notfound' />
       </Switch>
+      </Suspense>
       <div className={["footer", hide ? 'hide' : 'show'].join(' ')} >
         <ul className="nav-menu">
           {
