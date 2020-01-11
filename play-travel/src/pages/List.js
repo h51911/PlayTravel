@@ -46,26 +46,6 @@ class List extends Component{
                 products:[]
             })
             }
-        // await myweb.get('/list',{
-        //     city_code:params.code
-        // }).then(data=>{
-        //     if(data){
-        //         let digi = data[0];
-        //         let products = digi.products;
-        //         this.setState({
-        //             data:digi,
-        //             products:products
-        //         })
-        //     }else{
-        //         this.setState({
-        //             data:"",
-        //             products:[]
-        //         })
-        //     }
-        // })
-
-
-        console.log(666);
     }
     
     componentWillUnmount = () => {

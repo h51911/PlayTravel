@@ -40,7 +40,6 @@ class Detail extends Component{
         })
 
         let {id:goodId} =params
-        console.log(goodId);
         let {description:{name:title}} = data
         let {images:{sliders:imgs}} =data
         let {sales_num:num} = data
@@ -81,38 +80,79 @@ class Detail extends Component{
 
     //跳到选择日期页面
     async toDate(list){
-        // console.log(list);
         //   获取当前日期
-        let date = new Date();
-        let seperator1 = "-";
-        let seperator2 = ":";
-        let year = date.getFullYear();
-        let month = date.getMonth() + 1;
-        let strDate = date.getDate();
-        let hour = date.getHours();
-        let min =date.getMinutes();
-        let min1 = min + 30;
-        let sec = date.getSeconds();
-        if (month >= 1 && month <= 9) {
-            month = "0" + month;
-        }
-        if (strDate >= 0 && strDate <= 9) {
-            strDate = "0" + strDate;
-        }
-        if (hour >= 0 && hour <= 9) {
-            hour = "0" + hour;
-        }
-        if (min >= 0 && min <= 9) {
-            min = "0" + min;
-        }
-        if (sec >= 0 && sec <= 9) {
-            sec = "0" + sec;
+        // let time1 = Date.now() + 1800000;
+        // let date2 = new Date(time1)
+        
+
+        // let date = new Date();
+        
+        function time(a){
+            if(a === 0){
+                let date = new Date();
+                let seperator1 = "-";
+                let seperator2 = ":";
+                let year = date.getFullYear();
+                let month = date.getMonth() + 1;
+                let strDate = date.getDate();
+                let hour = date.getHours();
+                let min =date.getMinutes();
+                let sec = date.getSeconds();
+                if (month >= 1 && month <= 9) {
+                    month = "0" + month;
+                }
+                if (strDate >= 0 && strDate <= 9) {
+                    strDate = "0" + strDate;
+                }
+                if (hour >= 0 && hour <= 9) {
+                    hour = "0" + hour;
+                }
+                if (min >= 0 && min <= 9) {
+                    min = "0" + min;
+                }
+                if (sec >= 0 && sec <= 9) {
+                    sec = "0" + sec;
+                }
+            
+                let currentdate = year + seperator1 + month + seperator1 + strDate + ' '+hour+ seperator2+min+seperator2+sec;
+                return currentdate;
+            }else if(a === 1){
+                let time1 = Date.now() + 1800000;
+                let date = new Date(time1)
+                let seperator1 = "-";
+                let seperator2 = ":";
+                let year = date.getFullYear();
+                let month = date.getMonth() + 1;
+                let strDate = date.getDate();
+                let hour = date.getHours();
+                let min =date.getMinutes();
+                let sec = date.getSeconds();
+                if (month >= 1 && month <= 9) {
+                    month = "0" + month;
+                }
+                if (strDate >= 0 && strDate <= 9) {
+                    strDate = "0" + strDate;
+                }
+                if (hour >= 0 && hour <= 9) {
+                    hour = "0" + hour;
+                }
+                if (min >= 0 && min <= 9) {
+                    min = "0" + min;
+                }
+                if (sec >= 0 && sec <= 9) {
+                    sec = "0" + sec;
+                }
+            
+                let currentdate = year + seperator1 + month + seperator1 + strDate + ' '+hour+ seperator2+min+seperator2+sec;
+                return currentdate;
+            }
         }
 
-        let currentdate = year + seperator1 + month + seperator1 + strDate + ' '+hour+ seperator2+min+seperator2+sec;
-        let currentdate1 = year + seperator1 + month + seperator1 + strDate + ' '+hour+ seperator2+min1+seperator2+sec;
+       let currentdate = time(0);
+       let currentdate1 = time(1);
 
-        let order_id = parseInt(list.goodId + Math.random(0,9)).toFixed();
+
+        let order_id = Math.floor(Math.random()*10)+ '' + list.goodId +  Math.floor(Math.random()*10);
         let user = JSON.parse(localStorage.getItem('TOKEN'));
 
         let path = this.props.location.pathname
@@ -136,12 +176,6 @@ class Detail extends Component{
         }else{
             this.props.history.push({pathname:'/login-phone',query:{from:path}});
         }
-
-        
-
-        
-
-        
     }
 
     componentWillUnmount = () => {

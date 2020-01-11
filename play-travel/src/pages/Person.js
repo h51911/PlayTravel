@@ -47,8 +47,6 @@ class Person extends Component{
       this.setState({
          data
       })
-
-      console.log(this.props);
     }
 
     name(a){
@@ -109,7 +107,7 @@ class Person extends Component{
       let data = JSON.parse(localStorage.getItem('data'));
       let {man_name,man_phone,man_email,error} = this.state;
       if(Boolean(man_name) && Boolean(man_phone) && Boolean(man_email)){
-        if(error.length == 1){
+        if(error.length === 1){
           alert('请确认信息是否输入正确！');
         }else{
           data.man_name = man_name;
@@ -134,12 +132,12 @@ class Person extends Component{
 
     render(){
         const { form } = this.props;
-        const { getFieldDecorator,getFieldError,getFieldsError,isFieldTouched,getFieldValue} = form;
+        const { getFieldDecorator,getFieldError,isFieldTouched} = form;
         const usernameError = isFieldTouched('username')&&getFieldError('username');
         const phoneError = isFieldTouched('phone')&&getFieldError('phone');
         const emailError = isFieldTouched('email')&&getFieldError('email');
 
-        let {product_name,total,tour_date,man_num,man_name} =this.state.data
+        let {product_name,total,tour_date,man_num} =this.state.data
 
         return(
             <div className="person">
@@ -231,7 +229,7 @@ class Person extends Component{
                 {/* 立即购买 */}
                 <div className="buyNow">
                     <div className="advisory">
-                    <p>{total * man_num}</p>
+                    <p>{(total * man_num).toFixed()}</p>
                     <p>费用明细</p>
                     </div>
                     <div className="buy" onClick={this.submit}>

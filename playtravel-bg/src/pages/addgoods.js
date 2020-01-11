@@ -11,14 +11,24 @@ class Addgood extends React.Component {
       from_date:"",
       to_date:"",
       priceError:true,
+      idError:true,
       start:"",
       end:""
     };
 
     id=(e)=>{
-      this.setState({
-        product_id:e.target.value
-      })
+      let reg = new RegExp(/^\d{5,}$/)
+      if(reg.test(e.target.value)){
+        this.setState({
+          product_id:e.target.value,
+          idError:true
+        })
+      }else{
+        this.setState({
+          product_id:e.target.value,
+          idError:false
+        })
+      }
     }
     city=(e)=>{
       this.setState({
@@ -39,7 +49,7 @@ class Addgood extends React.Component {
         })
       }else{
         this.setState({
-          min_price:"",
+          min_price:e.target.value,
           priceError:false
         })
       }
@@ -59,10 +69,10 @@ class Addgood extends React.Component {
     }
 
     submit=()=>{
-      let {product_id,cn_name,alias,min_price,from_date,to_date,priceError,start,end} = this.state;
+      let {product_id,cn_name,alias,min_price,from_date,to_date,priceError,idError,start,end} = this.state;
       if(product_id && cn_name && alias && min_price && from_date && to_date){
-        if(priceError){
-          if(end-start){
+        if(priceError&&idError){
+          if((end-start)>0){
             let result = myweb.get('/list/addPro',{
               product_id,
               cn_name,
@@ -80,6 +90,7 @@ class Addgood extends React.Component {
                 from_date:"",
                 to_date:""
               })
+              alert('添加成功');
             }else{
               alert('提交错误，请重新提交');
             }
@@ -113,8 +124,8 @@ class Addgood extends React.Component {
                     <Form.Item
                         style={{ display: 'flex' }}
                         label="ID"
-                    // validateStatus="error"
-                    // help="Should be combination of numbers & alphabets"
+                        validateStatus={this.state.idError?'':'error'}
+                        help={this.state.idError?'':"请输入至少5位的数字"}
                     >
                         <Input 
                         placeholder="输入项目id" 
@@ -134,6 +145,7 @@ class Addgood extends React.Component {
                             id="error2"
                             style={{ width: '500px' }}
                             onChange={e=>this.city(e)}
+                            value={this.state.cn_name}
                         />
                     </Form.Item>
                     <Form.Item
@@ -146,18 +158,20 @@ class Addgood extends React.Component {
                             id="error3"
                             style={{ width: '500px' }}
                             onChange={e=>this.play(e)}
+                            value={this.state.alias}
                         />
                     </Form.Item>
                     <Form.Item
                         style={{ display: 'flex' }}
                         label="价格"
-                    // validateStatus="error"
-                    // help="Should be combination of numbers & alphabets"
+                    validateStatus={this.state.priceError?'':'error'}
+                    help={this.state.priceError?'':"请输入非零开头的最多带两位小数的数字"}
                     >
                         < Input placeholder="输入项目价格"
                             id="error4"
                             style={{ width: '500px' }}
                             onChange={e=>this.price(e)}
+                            value={this.state.min_price}
                         />
                     </Form.Item>
                     <Form.Item label="日期" style={{ marginBottom: 0, display: 'flex' }}>
@@ -166,11 +180,11 @@ class Addgood extends React.Component {
                             // help="Please select the correct date"
                             style={{ display: 'inline-block', width: 'calc(50% - 12px)' }}
                         >
-                            <DatePicker onChange={this.startDate} />
+                            <DatePicker dateString={this.state.from_date} onChange={this.startDate} />
                         </Form.Item>
                         <span style={{ display: 'inline-block', width: '24px', textAlign: 'center' }}>-</span>
                         <Form.Item style={{ display: 'inline-block', width: 'calc(50% - 12px)' }}>
-                            <DatePicker onChange={this.endDate} />
+                            <DatePicker dateString={this.state.to_date}  onChange={this.endDate} />
                         </Form.Item>
                     </Form.Item>
                     <Button type="primary" block style={{ width: '250px' }} onClick={this.submit}>

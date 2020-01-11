@@ -81,17 +81,18 @@ html,body{
         bottom: 0;
         z-index: 6;//等下改
         .advisory{
-            width: vw(220);
-            height: vw(94);
+            width: vw(280);
+            height: 100%;
             background: #fff;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
             p{  
+                margin-bottom: vw(15);
                 &:nth-child(1){
                     font-size: vw(40);
+                    line-height: vw(40);
                     color: #c36160;
                     font-weight: 600;
                     &::before{
@@ -100,9 +101,8 @@ html,body{
                 }
 
                 &:nth-child(2){
-                    // height: vw(18);
                     font-size: vw(12);
-                    // font-weight: 600;
+                    line-height: vw(12);
                     color: #9c9c9c;
                 }
             }

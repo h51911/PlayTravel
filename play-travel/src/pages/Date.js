@@ -67,14 +67,7 @@ class Dately extends Component {
     console.log(this.state.num);
   }
 
-  click() {
-    console.log(this.state.num);
-    console.log(this.state.selectedValue.format('YYYY-MM-DD'));
-  }
-
   click(){
-    console.log(this.state.num);
-    console.log(this.state.selectedValue.format('YYYY-MM-DD'));
     let data = JSON.parse(localStorage.getItem('data'))
     data.man_num = this.state.num;
     data.tour_date = this.state.selectedValue.format('YYYY-MM-DD');
