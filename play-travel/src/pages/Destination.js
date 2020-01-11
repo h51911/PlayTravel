@@ -11,7 +11,6 @@ import {
 import City from '../components/DestinationList';
 import My from '../api/myweb';
 import '../scss/destination.css';
-import 'antd/dist/antd.css';
 
 
 class Destination extends Component {
