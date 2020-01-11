@@ -108,22 +108,22 @@ class Person extends Component{
     async submit(){
       let data = JSON.parse(localStorage.getItem('data'));
       let {man_name,man_phone,man_email,error} = this.state;
-      
-      let isok = Array.isArray(error);
-      console.log(isok);
-      console.log(error);
-      if(this.state.error.length){
-        alert('请确认信息是否输入正确');
+      if(Boolean(man_name) && Boolean(man_phone) && Boolean(man_email)){
+        if(error.length == 1){
+          alert('请确认信息是否输入正确！');
+        }else{
+          data.man_name = man_name;
+          data.man_phone = man_phone;
+          data.man_email = man_email;
+          let res = await myweb.get('/list/addGood',data)
+          if(res.code){
+            this.props.history.push('/order');
+          }
+        }
       }else{
-        data.man_name = man_name;
-        data.man_phone = man_phone;
-        data.man_email = man_email;
-
-        // let res = await myweb.get('/list/addGood',data)
-        // if(res){
-        //   this.props.history.push('/order');
-        // }
+        alert('确认信息是否全部输入完成！');
       }
+     
     }
 
     componentWillUnmount = () => {

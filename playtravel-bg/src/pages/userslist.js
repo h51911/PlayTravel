@@ -47,6 +47,9 @@ class Users extends Component {
             data: newdata,
         })
     }
+    componentWillUnmount() {
+        this.setState = (state, callback) => { return; }
+    }
 
     onSelectChange = selectedRowKeys => {
         // console.log('selectedRowKeys changed: ', selectedRowKeys);

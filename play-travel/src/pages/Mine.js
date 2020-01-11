@@ -22,6 +22,9 @@ class Mine extends Component {
         if (localStorage.getItem("TOKEN"))
             this.setState({ account: JSON.parse(localStorage.getItem("TOKEN")).account })
     }
+    componentWillUnmount() {
+        this.setState = (state, callback) => { return; }
+    }
     render() {
         let { account } = this.state;
         return <div className="mine">

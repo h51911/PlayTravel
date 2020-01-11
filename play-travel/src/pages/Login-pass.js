@@ -67,6 +67,9 @@ class LoginPass extends Component {
                 this.setState({ isReg: false });
         }
     }
+    componentWillUnmount() {
+        this.setState = (state, callback) => { return; }
+    }
     render() {
         let { accout, password, isReg, focus0, focus1 } = this.state;
         return <div className="page-login">

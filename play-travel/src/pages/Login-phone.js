@@ -103,6 +103,9 @@ class LoginPhone extends Component {
                 this.setState({ isReg: false });
         }
     }
+    componentWillUnmount() {
+        this.setState = (state, callback) => { return; }
+    }
     render() {
         let { phone, code, isReg, focus0, focus1, msg } = this.state;
         return <div className="page-login">
