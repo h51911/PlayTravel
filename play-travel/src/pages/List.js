@@ -126,7 +126,7 @@ class List extends Component{
                       <ul className="li">
                           {
                               products.length?
-                              products.map(item=>(<li key={item.product_id} onClick={this.toDetail.bind(this,item.product_id)}>
+                              products.map(item=>(item.alias? <li key={item.product_id} onClick={this.toDetail.bind(this,item.product_id)}>
                                 <div>
                                     {item.images?<img src={item.images[0].image_url} alt=""></img>:''}
                                 </div>
@@ -138,7 +138,11 @@ class List extends Component{
                                     </p>
                                     <p>{item.min_price}</p>
                                 </div>
-                            </li> )):''
+                            </li>:<div  className="noData">
+                    无数据
+                </div> )):<div  className="noData">
+                    无数据
+                </div>
                           }
                       </ul>
                     </TabPane>
