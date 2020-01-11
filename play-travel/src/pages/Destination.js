@@ -11,7 +11,6 @@ import {
 import City from '../components/DestinationList';
 import My from '../api/myweb';
 import '../scss/destination.css';
-import 'antd/dist/antd.css';
 
 
 class Destination extends Component {
@@ -127,12 +126,17 @@ class Destination extends Component {
         if (obj.title) {
             let isok = true;
             let data = JSON.parse(localStorage.getItem("searchname"));
-            console.log(data);
-            data.forEach(item => {
-                if (item.title === obj.title) {
-                    isok = false;
-                }
-            });
+            // console.log(data);
+            if (data) {
+                data.forEach(item => {
+                    if (item.title === obj.title) {
+                        isok = false;
+                    }
+                });
+            } else {
+                data = [];
+            }
+            
             if (isok) {
                 let searchobj = {
                     name: obj.title,
@@ -140,7 +144,7 @@ class Destination extends Component {
                     type:'city'
                 }
                 data.push(searchobj);
-                console.log(data);
+                // console.log(data);
                 let str = JSON.stringify(data);
                 localStorage.setItem("searchname", str);
             }

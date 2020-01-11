@@ -4,9 +4,6 @@ import {
     Table
 } from 'antd';
 
-import 'antd/dist/antd.css';
-
-
 
 class Goods extends Component{
     state = {

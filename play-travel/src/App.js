@@ -5,6 +5,7 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import './css/base.css'
 import './scss/App.css';
 import './icon/iconfont.css';
+// import 'antd/dist/antd.css';
 
 import My from './api/myweb';
  const Destination = lazy(() =>import('./pages/Destination'));

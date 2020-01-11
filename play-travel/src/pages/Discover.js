@@ -8,7 +8,6 @@ import {
 import My from '../api/myweb';
 import Advertisement from '../components/Advertisement';
 import '../scss/discover.css';
-import 'antd/dist/antd.css';
 
 class Discover extends Component {
     constructor(props) {
