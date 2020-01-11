@@ -85,7 +85,7 @@ class Order extends Component {
             this.setState({
                 data: this.state.datalist.filter(item => item.status_id === '1').length ? this.state.datalist.filter(item => item.status_id === '3') : ''
             })
-        } else if (idx === 1) {
+        } else if (idx === 4) {
             this.setState({
                 data: this.state.datalist.filter(item => item.status_id === '1').length ? this.state.datalist.filter(item => item.status_id === '4') : ''
             })
