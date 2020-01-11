@@ -216,7 +216,7 @@ class Order extends Component {
                                 <div className="item_top">
                                     <p className="clearfix first_line ">
                                         <span className="item_status">{item.status_name}</span>
-                                        <span className="item_price">￥{item.total}</span>
+                                        <span className="item_price">￥{(item.total * item.man_num).toFixed(2)}</span>
                                     </p>
                                     <p className="second_line clearfix">
                                         <span className='order_num fl'>订单号:{item.order_id}</span>
@@ -226,7 +226,7 @@ class Order extends Component {
                                 <div className="item_center">
                                     <p className="item_title">{item.product_name}</p>
                                     <p className="item_time">出行日期:{item.tour_date}</p>
-                                    <p className="item_mount">购买数量:套餐份数×1</p>
+                                    <p className="item_mount">购买数量:套餐份数×{item.man_num}</p>
 
                                 </div>
                                 <div className="item_footer">
