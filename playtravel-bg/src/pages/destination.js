@@ -2,9 +2,6 @@ import React from 'react';
 import { Table } from 'antd';
 import My from '../api/myweb'
 
-import 'antd/dist/antd.css';
-
-
 
 class Destination extends React.Component {
   state = {

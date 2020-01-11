@@ -4,10 +4,6 @@ import {
     Table
 } from 'antd';
 
-import 'antd/dist/antd.css';
-
-
-
 class Order extends Component {
     state = {
         selectedRowKeys: [], // Check here to configure the default column
