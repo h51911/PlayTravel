@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import My from '../api/myweb'
 import { Table } from 'antd';
 
-import 'antd/dist/antd.css';
-
-
 
 class Users extends Component {
     state = {

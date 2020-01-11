@@ -1,9 +1,9 @@
 {
-    "plugins": [
-        ["import", {
-            "libraryName": "antd",
-            "libraryDirectory": "es",
-            "style": "css"
-        }]
-    ]
+  "plugins": [
+    ["import", {
+      "libraryName": "antd",
+      "libraryDirectory": "es",
+      "style": "css"
+    }]
+  ]
 }
