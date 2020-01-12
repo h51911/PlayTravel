@@ -61,6 +61,7 @@ class SetPass extends Component {
         } else
             message.error("请输入原密码");
     }
+    goBack = () => { this.props.history.go(-1); };
     componentWillUnmount() {
         this.setState = (state, callback) => { return; }
     }
@@ -68,7 +69,7 @@ class SetPass extends Component {
         let { password, newpass, confimpass, focus0, focus1, focus2 } = this.state;
         return (<div className="set-pass">
             <header className="login-header">
-                <div className="link"><Icon type="left" /></div>
+                <div className="link" onClick={this.goBack}><Icon type="left" /></div>
                 <h1 className="h1">密码更改</h1>
             </header>
             <main>
