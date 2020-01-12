@@ -117,8 +117,8 @@ Router.route('/pass').post(async (req, res) => {
 
 // 修改密码
 Router.route('/edit').post(async (req, res) => {
-    let { phone, password, email } = req.body;
-    let result = await mongo.update('users', { phone }, { password, email });
+    let { account, phone, password, email } = req.body;
+    let result = await mongo.update('users', { phone }, { account, password, email });
     if (result.modifiedCount)
         res.send(formatData({
             message: "修改成功"

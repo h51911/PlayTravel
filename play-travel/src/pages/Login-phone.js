@@ -74,7 +74,7 @@ class LoginPhone extends Component {
                             email: ' '
                         });
                         if (reg.code)
-                            message.info("已自动注册，初始密码为初次登录时的验证码");
+                            message.info("已自动注册，初始密码为初次登录时的验证码，请及时修改密码");
                         else
                             message.error("error：注册失败");
                     }
