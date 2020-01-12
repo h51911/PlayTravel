@@ -2,8 +2,9 @@ import axios from 'axios';
 import Qs from 'qs';
 
 const My = axios.create({
-    // baseURL: 'http://localhost:8087'
-    baseURL: 'http://10.3.140.156:8087'
+    baseURL: 'http://localhost:8087'
+    // baseURL: 'http://10.3.140.156:8087'
+    // baseURL: 'http://120.77.246.36:8086'/
 });
 
 export const get = async (url, params, config = {}) => {

@@ -1,4 +1,6 @@
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   width: 100%;
 }
@@ -23,11 +25,24 @@ html, body, #root {
   height: auto;
 }
 
-.App #goodslist, .App #destination, .App #orderlist, .App #addgood {
+.App #goodslist,
+.App #destination,
+.App #orderlist,
+.App #addgood,
+.App #userslist {
   overflow: auto;
   flex: 1;
 }
 
-.App #goodslist table td, .App #destination table td, .App #orderlist table td, .App #addgood table td {
+.App #goodslist table td,
+.App #destination table td,
+.App #orderlist table td,
+.App #addgood table td,
+.App #userslist table td {
   max-width: 500px;
+}
+
+.App #userslist .ant-table-wrapper {
+  width: 96%;
+  margin: 0 auto;
 }
