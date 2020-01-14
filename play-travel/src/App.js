@@ -44,7 +44,7 @@ class App extends Component {
         },
         {
           name: 'order',
-          path: '/order',
+          path: '/orderlist',
           text: '订单',
           icon: 'icon-icon-contract'
         },
@@ -62,7 +62,7 @@ class App extends Component {
   changeMenu(current) {
     let path = this.state.menu[current].path;
     if (path !== this.state.selecteditem) {
-      if (!localStorage.getItem("TOKEN") && ['/mine', '/order'].some(val => val === path)) {
+      if (!localStorage.getItem("TOKEN") && ['/mine', '/orderlist'].some(val => val === path)) {
         this.props.history.push({ pathname: '/login-phone', query: { from: this.state.selecteditem } })
       } else {
         this.setState({
@@ -94,7 +94,7 @@ class App extends Component {
   };
   isToken = async () => {
     let path = this.props.location.pathname;
-    let arr_login = ['/mine', '/order'];
+    let arr_login = ['/mine', '/orderlist'];
     if (localStorage.getItem("TOKEN")) {
       // 本地已登录
       let { authorization } = JSON.parse(localStorage.getItem("TOKEN"));
@@ -133,10 +133,10 @@ class App extends Component {
         <Route path='/mine' component={Mine} />
         <Route path='/login-phone' component={LoginPhone} />
         <Route path='/login-pass' component={LoginPass} />
-        <Route path='/order/:id' component={Orderdetail} />
+        <Route path='/orderlist/:id' component={Orderdetail} />
         <Route path='/account' component={Account} />
         <Route path='/set-pass' component={SetPass} />DatelyDately
-        <Route path='/order' component={Order} />
+        <Route path='/orderlist' component={Order} />
         <Route path='/list/:code' component={List} />
         <Route path='/detail/:id' component={Detail} />
         <Route path='/date/:id' component={Dately} />
