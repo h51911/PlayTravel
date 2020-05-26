@@ -13,8 +13,8 @@ function randNum(n) {
 // 发送验证码
 async function sms(phone, code) {
     var client = new Core({
-        accessKeyId: 'LTAI4FeHzmjxrWvdbR9ZhRBX',
-        accessKeySecret: 'poc6eApYfdKb06gBETBhinRARwQKOZ',
+        accessKeyId: '',
+        accessKeySecret: '',
         endpoint: 'https://dysmsapi.aliyuncs.com',
         apiVersion: '2017-05-25'
     });
